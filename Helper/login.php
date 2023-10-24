@@ -1,0 +1,4 @@
+<?php
+    //Objeto login
+    //Estática
+?>

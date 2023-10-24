@@ -1,0 +1,5 @@
+<?php
+    //Objeto sesion
+    //Estática
+    
+?>
