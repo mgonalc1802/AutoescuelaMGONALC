@@ -32,7 +32,7 @@
     //     echo $usuarios[$i] . '<br>';
     // }
     
-    if(usuarioRepository::existeUsuario('Javer', 'javier1234'))
+    if(usuarioRepository::existeUsuario('Javier', 'javier1234'))
     {
         echo "Si existe";
     }

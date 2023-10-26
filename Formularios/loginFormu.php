@@ -51,7 +51,7 @@
             //Acción que se produce cuando pulsas el botón Registrar
             if(isset($_POST['registrar']))
             {
-                header("Location: https://rickandmortyapi.com/documentation");
+                header("Location: http://localhost/ProyectoAutoescuela/Formularios/registroFormu.php");
                 exit;
             }
         ?>
