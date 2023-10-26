@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Database/DB.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Entidades/categoria.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Database/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/categoria.php';
 
 
-    class categoriaRepositorio
+    class categoriaRepository
     {
         private static $conexion;
 
@@ -12,26 +12,26 @@
         public static function findById($id)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM categoria WHERE id = '$id';");
+            $resultado = $conexion->query("SELECT id, nombre FROM categoria WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                categoriaRepository::mostrarSelect($registro);
             }
         }
 
         public static function findObject($categoria)
         {
-            findById($categoria.getID());
+            categoriaRepository::findById($categoria->getID());
         }
 
         //Por nombre
         public static function findByName($nombre)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM categoria WHERE nombre = '$nombre';");
+            $resultado = $conexion->query("SELECT id, nombre FROM categoria WHERE nombre = '$nombre';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                categoriaRepository::mostrarSelect($registro);
             }
         }
 
@@ -61,6 +61,12 @@
             {
                 print "<p> Se han borrado $resultado registros.</p>";
             }
+        }
+
+        //Borrar un objeto
+        public static function deleteObject($categoria)
+        {
+            categoriaRepository::deleteById($categoria->getID());
         }
 
         //Por Nombre
@@ -94,7 +100,7 @@
         public static function insert($categoria)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO categoria(nombre) values (" . $categoria.getNombre() . ");");
+            $resultado = $conexion->exec("INSERT INTO categoria(nombre) values ('" . $categoria->getNombre() . "');");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";
@@ -111,11 +117,19 @@
         public static function updateNombre($categoria, $nuevoNombre)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE categoria SET nombre = " . $categoria.setNombre($nuevoNombre) . " WHERE id = " . $categoria.getId() . ";");
+            $resultado = $conexion->exec("UPDATE categoria SET nombre = '$nuevoNombre' WHERE id = '" . $categoria->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
             }
+        }
+
+
+        //_----------------------------FUNCIONES PROPIAS----------------------------
+        public static function mostrarSelect($registro)
+        {
+            echo "ID: ".$registro['id']."<br>";
+            echo "Nombre: ".$registro['nombre']."<br><br>";
         }
     }
 ?>

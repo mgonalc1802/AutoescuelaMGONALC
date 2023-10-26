@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Database/DB.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Entidades/usuario.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Database/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/usuario.php';
 
 
-    class usuarioRepositorio
+    class usuarioRepository
     {
         private static $conexion;
 
@@ -12,27 +12,27 @@
         public static function findById($id)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM usuario WHERE id = '$id';");
+            $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                usuarioRepository::mostrarSelect($registro);
             }
         }
 
         //Encontrar por objeto
         public static function findObject($usuario)
         {
-            findById($usuario.getID());
+            usuarioRepository::findById($usuario->getID());
         }
 
         //Por nombre
         public static function findByName($nombre)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM usuario WHERE nombre = '$nombre';");
+            $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE nombre = '$nombre';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                usuarioRepository::mostrarSelect($registro);
             }
         }
 
@@ -40,10 +40,10 @@
         public static function findByRol($rol)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT nombre FROM usuario WHERE rol = '$rol';");
+            $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE rol = '$rol';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['nombre']."<br>";
+                usuarioRepository::mostrarSelect($registro);
             }
         }
 
@@ -51,10 +51,10 @@
         public static function findByUrlFoto($urlFoto)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT nombre FROM usuario WHERE urlFoto = '$urlFoto';");
+            $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE urlFoto = '$urlFoto';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['nombre']."<br>";
+                usuarioRepository::mostrarSelect($registro);
             }
         }
 
@@ -62,10 +62,10 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM usuario;");
+            $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID: ".$registro['id']."<br>";
+                usuarioRepository::mostrarSelect($registro);
             }
         }
 
@@ -89,7 +89,7 @@
         //Borrar un objeto
         public static function deleteObject($usuario)
         {
-            deleteById($usuario.getID());
+            usuarioRepository::deleteById($usuario->getID());
         }
 
         //Por Nombre
@@ -145,7 +145,7 @@
         public static function insert($usuario)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO usuario(nombre, contrasenia, rol, urlFoto) values (" . $usuario.getNombre() . ", " . $usuario.getContrasenia() . ", " . $usuario.getRol() . ", " . $usuario.getUrlFoto() . ");");
+            $resultado = $conexion->exec("INSERT INTO usuario(nombre, contrasenia, rol, urlFoto) values ('" . $usuario->getNombre() . "', '" . $usuario->getContrasenia() . "', '" . $usuario->getRol() . "', '" . $usuario->getUrlFoto() . "');");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";
@@ -162,7 +162,7 @@
         public static function updateNombre($usuario, $nuevoNombre)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE usuario SET nombre = " . $usuario.setNombre($nuevoNombre) . " WHERE id = $id;");
+            $resultado = $conexion->exec("UPDATE usuario SET nombre = '$nuevoNombre' WHERE id = '" . $usuario->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -173,7 +173,7 @@
         public static function updateContrasenia($usuario, $nuevaContrasenia)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE usuario SET contrasenia = " . $usuario.setContrasenia($nuevaContrasenia) . " WHERE id = " . $usuario.getId() . ";");
+            $resultado = $conexion->exec("UPDATE usuario SET contrasenia = '$nuevaContrasenia' WHERE id = '" . $usuario->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -184,7 +184,7 @@
         public static function updateUrlFoto($usuario, $nuevoUrlFoto)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE usuario SET urlFoto = " . $usuario.setUrlFoto($nuevoUrlFoto) . " WHERE urlFoto = " . $usuario.getId() . ";");
+            $resultado = $conexion->exec("UPDATE usuario SET urlFoto = '$nuevoUrlFoto' WHERE id = '" . $usuario->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -195,11 +195,21 @@
         public static function updateRol($usuario, $nuevoRol)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE usuario SET rol = " . $usuario.setNombre($nuevoRol) . " WHERE id = " . $usuario.getId() . ";");
+            $resultado = $conexion->exec("UPDATE usuario SET rol = '$nuevoRol' WHERE id = '" . $usuario->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
             }
+        }
+
+        //_----------------------------FUNCIONES PROPIAS----------------------------
+        public static function mostrarSelect($registro)
+        {
+            echo "ID: ".$registro['id']."<br>";
+            echo "Nombre: ".$registro['nombre']."<br>";
+            echo "Contraseña: ".$registro['contrasenia']."<br>";
+            echo "Rol: ".$registro['rol']."<br>";
+            echo "Foto: ".$registro['urlFoto']."<br><br>";
         }
     }
 ?>

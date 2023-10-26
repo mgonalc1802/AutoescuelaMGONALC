@@ -1,114 +1,114 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Database/DB.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Entidades/pregunta.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Database/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/pregunta.php';
 
 
-    class preguntaRepositorio
+    class preguntaRepository
     {
         private static $conexion;
 
         //-------------------------------ENCONTRAR--------------------------------------
         //Por ID
-        function findById($id)
+        public static function findById($id)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM pregunta WHERE id = '$id';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         public static function findObject($pregunta)
         {
-            findById($pregunta.getID());
+            findById($pregunta->getID());
         }
 
         //Por enunciado
-        function findByEnunciado($enunciado)
+        public static function findByEnunciado($enunciado)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM pregunta WHERE enunciado = '$enunciado';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE enunciado = '$enunciado';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         //Por respuesta1
-        function findByRespuesta1($respuesta1)
+        public static function findByRespuesta1($respuesta1)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT enunciado FROM pregunta WHERE respuesta1 = '$respuesta1';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta1 = '$respuesta1';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['enunciado']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         //Por respuesta2
-        function findByRespuesta2($respuesta2)
+        public static function findByRespuesta2($respuesta2)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT enunciado FROM pregunta WHERE respuesta2 = '$respuesta2';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta2 = '$respuesta2';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['enunciado']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         //Por respuesta3
-        function findByRespuesta3($respuesta3)
+        public static function findByRespuesta3($respuesta3)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT enunciado FROM pregunta WHERE respuesta3 = '$respuesta3';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta3 = '$respuesta3';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['enunciado']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         //Por correcta
-        function findByCorrecta($correcta)
+        public static function findByCorrecta($correcta)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT enunciado FROM pregunta WHERE correcta = '$correcta';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE correcta = '$correcta';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['enunciado']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         //Por respuesta2
-        function findByUrl($url)
+        public static function findByUrl($url)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT enunciado FROM pregunta WHERE respuesta2 = '$respuesta2';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta2 = '$respuesta2';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['enunciado']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         //Por respuesta2
-        function findByTipoUrl($tipoUrl)
+        public static function findByTipoUrl($tipoUrl)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->query("SELECT enunciado FROM pregunta WHERE tipoUrl = '$tipoUrl';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['enunciado']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
         //Encontrar a todos
-        function findAll()
+        public static function findAll()
         {
             $conexion = DB::conecta();
             $resultado = $conexion->query("SELECT id FROM pregunta;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID: ".$registro['id']."<br>";
+                preguntaRepository::mostrarSelect($registro);
             }
         }
 
@@ -119,7 +119,7 @@
 
         //-------------------------------------BORRAR-----------------------------
         //Por ID
-        function deleteById($id)
+        public static function deleteById($id)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta WHERE id = '$id';");
@@ -132,22 +132,22 @@
         //Borrar un objeto
         public static function deleteObject($pregunta)
         {
-            deleteById($pregunta.getID());
+            preguntaRepository::deleteById($pregunta->getID());
         }
 
-        //Por Nombre
-        function deleteByEnunciado($enunciado)
+        //Por Enunciado
+        public static function deleteByEnunciado($enunciado)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("DELETE FROM pregunta WHERE enunciado = '$enunciado';")unciado
+            $resultado = $conexion->exec("DELETE FROM pregunta WHERE enunciado = '$enunciado';");
             if ($resultado) 
             {
                 print "<p> Se han borrado $resultado registros.</p>";
             }
         }
 
-        //Por Rol
-        function deleteByRespuesta1($respuesta1)
+        //Por Correcta
+        public static function deleteByRespuesta1($respuesta1)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta WHERE respuesta1 = '$respuesta1';");
@@ -158,7 +158,7 @@
         }
 
         //Por respuesta2
-        function deleteByRespuesta2($respuesta2)
+        public static function deleteByRespuesta2($respuesta2)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta WHERE respuesta2 = '$respuesta2';");
@@ -169,7 +169,7 @@
         }
 
         //Por respuesta3
-        function deleteByRespuesta3($respuesta3)
+        public static function deleteByRespuesta3($respuesta3)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta WHERE respuesta3 = '$respuesta3';");
@@ -180,7 +180,7 @@
         }
 
         //Por correcta
-        function deleteByCorrecta($correcta)
+        public static function deleteByCorrecta($correcta)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta WHERE correcta = '$correcta';");
@@ -191,7 +191,7 @@
         }
 
         //Por url
-        function deleteByUrl($url)
+        public static function deleteByUrl($url)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta WHERE url = '$url';");
@@ -202,7 +202,7 @@
         }
         
         //Por tipoUrl
-        function deleteByTipoUrl($tipoUrl)
+        public static function deleteByTipoUrl($tipoUrl)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta WHERE tipoUrl = '$tipoUrl';");
@@ -213,7 +213,7 @@
         }
 
         //Borrar todos
-        function deleteAll()
+        public static function deleteAll()
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM pregunta;");
@@ -229,16 +229,15 @@
 
 
         //----------------------------------INSERTAR-----------------------------
-        function insert($pregunta)
+        public static function insert($pregunta)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO pregunta(enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoUrl) values (" . $pregunta.getEnunciado() . ", " . $pregunta.getRespuesta1() . ", " . $pregunta.getRespuesta2() . ", " . $pregunta.getRespuesta3() . ", " . $pregunta.getCorrecta() . ", " . $pregunta.getUrl() . " , " . $pregunta.getTipoUrl() . ");")unciado
+            $resultado = $conexion->exec("INSERT INTO pregunta(enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoUrl) values ('" . $pregunta->getEnunciado() . "', '" . $pregunta->getRespuesta1() . "', '" . $pregunta->getRespuesta2() . "', '" . $pregunta->getRespuesta3() . "', '" . $pregunta->getCorrecta() . "', '" . $pregunta->getUrl() . "' , '" . $pregunta->getTipoUrl() . "');");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";
             }
         }
-z
 
 
 
@@ -246,10 +245,10 @@ z
 
         //--------------------------------ACTUALIZAR-----------------------------
         //enunciado
-        function updateEnunciado($pregunta, $nuevoNombre)
+        public static function updateEnunciado($pregunta, $nuevoNombre)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE pregunta SET enunciado = " . $pregunta.setNombre($nuevoNombre) . " WHERE id = " . pregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE pregunta SET enunciado = '$nuevoNombre' WHERE id = '" . $pregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -257,10 +256,10 @@ z
         }
 
         //respuesta1
-        function updateRespuesta1($pregunta, $nuevaResp1)
+        public static function updateRespuesta1($pregunta, $nuevaResp1)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE pregunta SET respuesta1 = " . $pregunta.setRespuesta1($nuevaResp1) . " WHERE id = " . $pregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE pregunta SET respuesta1 = '$nuevaResp1'  WHERE id = '" . $pregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -268,10 +267,10 @@ z
         }
 
         //respuesta2
-        function updateRespuesta2($pregunta, $nuevaResp2)
+        public static function updateRespuesta2($pregunta, $nuevaResp2)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE pregunta SET respuesta2 = " . $pregunta.setRespuesta2($nuevaResp2) . " WHERE respuesta2 = " . $pregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE pregunta SET respuesta2 = '$nuevaResp2'  WHERE id = '" . $pregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -279,10 +278,10 @@ z
         }
 
         //respuesta3
-        function updaterespuesta3($pregunta, $nuevaResp3)
+        public static function updaterespuesta3($pregunta, $nuevaResp3)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE pregunta SET respuesta3 = " . $pregunta.setRespuesta3($nuevaResp3) . " WHERE id = " . $pregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE pregunta SET respuesta3 = '$nuevaResp3'  WHERE id = '" . $pregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -290,10 +289,10 @@ z
         }
 
         //correcta
-        function updatecorrecta($pregunta, $nuevaCorrecta)
+        public static function updatecorrecta($pregunta, $nuevaCorrecta)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE pregunta SET correcta = " . $pregunta.setCorrecta($nuevaCorrecta) . " WHERE id = " . $pregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE pregunta SET correcta = '$nuevaCorrecta' WHERE id = '" . $pregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -301,10 +300,10 @@ z
         }
 
         //url
-        function updateUrl($pregunta, $nuevaURL)
+        public static function updateUrl($pregunta, $nuevaURL)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE pregunta SET url = " . $pregunta.setUrl($nuevaURL) . " WHERE id = " . $pregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE pregunta SET url = '$nuevaUR' WHERE id = '" . $pregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -312,14 +311,30 @@ z
         }
 
         //tipoUrl
-        function updateTipoUrl($pregunta, $nuevaTipoUrl)
+        public static function updateTipoUrl($pregunta, $nuevaTipoUrl)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE pregunta SET tipoUrl = " . $pregunta.setTipoUrl($nuevaTipoUrl) . " WHERE id = " . $pregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE pregunta SET tipoUrl = '$nuevaTipoUrl' WHERE id = '" . $pregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
             }
+        }
+
+
+        //-----------------------------FUNCIONES PROPIAS-------------------
+        public static function mostrarSelect($registro)
+        {
+            echo "ID: ".$registro['id']."<br>";
+            echo "Enunciado: ".$registro['enunciado']."<br>";
+            echo "Respuesta1: ".$registro['respuesta1']."<br>";
+            echo "Respuesta2: ".$registro['respuesta2']."<br>";
+            echo "Respuesta3: ".$registro['respuesta3']."<br>";
+            echo "Correcta: ".$registro['correcta']."<br>";
+            echo "URL: ".$registro['url']."<br>";
+            echo "TipoUrl: ".$registro['tipoURL']."<br>";
+            echo "ID Categoria: ".$registro['idCategoria']."<br>";   
+            echo "ID Dificultad: ".$registro['idDificultad']."<br><br>";
         }
     }
 ?>

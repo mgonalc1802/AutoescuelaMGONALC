@@ -1,5 +1,5 @@
 <?php
-    class Examen
+    class ExamenTienePregunta
     {
         public $id;
         public $idExamen;
@@ -47,7 +47,7 @@
 
         public function __toString()
         {
-            return "Intentos => ID: " . $this->id . " IDExamen: " . $this->idExamen . " IDPregunta: " . $this->idPregunta;
+            return "ExamenTienePregunta => ID: " . $this->id . " IDExamen: " . $this->idExamen . " IDPregunta: " . $this->idPregunta;
         }
     }
 ?>

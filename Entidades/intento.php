@@ -1,5 +1,5 @@
 <?php
-    class Examen
+    class Intento
     {
         public $id;
         public $fecha;

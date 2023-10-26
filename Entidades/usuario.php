@@ -33,7 +33,7 @@
         //Devuelve ni
         public function getContrasenia() 
         { 
-            return $this->ni; 
+            return $this->contrasenia; 
         }
 
         //Devuelve rol
@@ -58,7 +58,7 @@
         //Asigna contaseña
         public function setContrasenia($nuevoContrasenia)
         {
-            $this->ni = $ni;
+            $this->contrasenia = $contrasenia;
         }
 
         //Asigna rol

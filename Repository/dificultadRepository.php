@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Database/DB.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Entidades/dificultad.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Database/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/dificultad.php';
 
 
-    class dificultadRepositorio
+    class dificultadRepository
     {
         private static $conexion;
 
@@ -12,27 +12,28 @@
         public static function findById($id)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM dificultad WHERE id = '$id';");
+            $resultado = $conexion->query("SELECT id, nombre FROM dificultad WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                dificultadRepository::mostrarSelect($registro);
             }
         }
 
         //Encontrar por objeto
         public static function findObject($dificultad)
         {
-            findById($dificultad.getID());
+            dificultadRepository::findById($dificultad->getID());
         }
 
         //Por nombre
         public static function findByName($nombre)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM dificultad WHERE nombre = '$nombre';");
+            $resultado = $conexion->query("SELECT id, nombre FROM dificultad WHERE nombre = '$nombre';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                dificultadRepository::mostrarSelect($registro);
+
             }
         }
 
@@ -40,10 +41,10 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM dificultad;");
+            $resultado = $conexion->query("SELECT id, nombre FROM dificultad;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID: ".$registro['id']."<br>";
+                dificultadRepository::mostrarSelect($registro);
             }
         }
 
@@ -67,7 +68,7 @@
         //Borrar un objeto
         public static function deleteObject($dificultad)
         {
-            deleteById($dificultad.getID());
+            dificultadRepository::deleteById($dificultad->getID());
         }
 
         //Por Nombre
@@ -101,7 +102,7 @@
         public static function insert($dificultad)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO dificultad(nombre) values (" . $dificultad.getNombre() . ");");
+            $resultado = $conexion->exec("INSERT INTO dificultad(nombre) values ('" . $dificultad->getNombre() . "');");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";
@@ -118,11 +119,23 @@
         public static function updateNombre($dificultad, $nuevoNombre)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE dificultad SET nombre = " . $dificultad.setNombre($nuevoNombre) . " WHERE id = " . $dificultad.getId() . ";");
+            $resultado = $conexion->exec("UPDATE dificultad SET nombre = '$nuevoNombre' WHERE id = '" . $dificultad->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
             }
+        }
+
+
+
+
+
+
+        //_----------------------------FUNCIONES PROPIAS----------------------------
+        public static function mostrarSelect($registro)
+        {
+            echo "ID: ".$registro['id']."<br>";
+            echo "Nombre: ".$registro['nombre']."<br><br>";
         }
     }
 ?>

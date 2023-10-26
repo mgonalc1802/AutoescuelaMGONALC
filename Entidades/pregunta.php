@@ -16,7 +16,7 @@
         {
             $this->id = $id;
             $this->enunciado = $enunciado;
-            $this->respuesta1$respuesta1 = $respuesta1;
+            $this->respuesta1 = $respuesta1;
             $this->respuesta2 = $respuesta2;
             $this->respuesta3 = $prespuesta;
             $this->correcta = $correcta;

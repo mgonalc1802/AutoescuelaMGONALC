@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Database/DB.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Entidades/intento.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Database/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/intento.php';
 
 
-    class intentoRepositorio
+    class intentoRepository
     {
         private static $conexion;
 
@@ -12,26 +12,26 @@
         public static function findById($id)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM intento WHERE id = '$id';");
+            $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                intentoRepository::mostrarSelect($registro);
             }
         }
 
         public static function findObject($intento)
         {
-            findById($intento.getID());
+            findById($intento->getID());
         }
 
         //Por Fecha
         public static function findByFecha($fecha)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM intento WHERE fecha = '$fecha';");
+            $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento WHERE fecha = '$fecha';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                intentoRepository::mostrarSelect($registro);
             }
         }
 
@@ -39,10 +39,10 @@
         public static function findByJSONIntento($JSONIntento)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT fecha FROM intento WHERE JSONIntento = '$JSONIntento';");
+            $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento WHERE JSONIntento = '$JSONIntento';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "Nombre ".$registro['fecha']."<br>";
+                intentoRepository::mostrarSelect($registro);
             }
         }
 
@@ -50,10 +50,10 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM intento;");
+            $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID: ".$registro['id']."<br>";
+                intentoRepository::mostrarSelect($registro);
             }
         }
 
@@ -76,7 +76,7 @@
 
         public static function deleteObject($intento)
         {
-            deleteById($intento.getID());
+            intentoRepository::deleteById($intento.getID());
         }
 
         //Por Fecha
@@ -121,7 +121,7 @@
         public static function insert($intento)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO intento(fecha, JSONIntento) values (" . $intento.getFecha() . ", " . $intento.getJSONIntento() . ";");
+            $resultado = $conexion->exec("INSERT INTO intento(fecha, JSONIntento) values ('" . $intento->getFecha() . "', '" . $intento->getJSONIntento() . "';");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";
@@ -138,7 +138,7 @@
         public static function updateFecha($intento, $nuevaFecha)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE intento SET fecha = " . $intento.setFecha($nuevaFecha) . " WHERE id = ". $intento.getId() . ";");
+            $resultado = $conexion->exec("UPDATE intento SET fecha = '$nuevaFecha' WHERE id = '". $intento->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -149,11 +149,19 @@
         public static function updateJSONIntento($intento, $nuevoJSON)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE intento SET JSONIntento = " . $intento.setJSONIntento($nuevoJSON) . " WHERE id = " . $intento.getID() . ";");
+            $resultado = $conexion->exec("UPDATE intento SET JSONIntento = '$nuevoJSON' WHERE id = '" . $intento->getID() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
             }
+        }
+
+        //-----------------------------FUNCIONES PROPIAS-------------------
+        public static function mostrarSelect($registro)
+        {
+            echo "ID: ".$registro['id']."<br>";
+            echo "Fecha y Hora: ".$registro['fecha']."<br>";
+            echo "JSONIntento: ".$registro['JSONIntento']."<br>";
         }
     }
 ?>

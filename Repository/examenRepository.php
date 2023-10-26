@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Database/DB.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Entidades/examen.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Database/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/examen.php';
 
 
-    class examenRepositorio
+    class examenRepository
     {
         private static $conexion;
 
@@ -12,26 +12,26 @@
         public static function findById($id)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM examen WHERE id = '$id';");
+            $resultado = $conexion->query("SELECT id, fechaCreacion, idProfesor FROM examen WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                examenRepository::mostrarSelect($registro);
             }
         }
 
         public static function findObject($examen)
         {
-            findById($examen.getID());
+            examenRepository::findById($examen->getID());
         }
 
         //Por fechaCreacion
         public static function findByFechaCreacion($fechaCreacion)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM examen WHERE fechaCreacion = '$fechaCreacion';");
+            $resultado = $conexion->query("SELECT id, fechaCreacion, idProfesor FROM examen WHERE fechaCreacion = '$fechaCreacion';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                examenRepository::mostrarSelect($registro);
             }
         }
 
@@ -39,10 +39,10 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM examen;");
+            $resultado = $conexion->query("SELECT id, fechaCreacion, idProfesor FROM examen;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID: ".$registro['id']."<br>";
+                examenRepository::mostrarSelect($registro);
             }
         }
 
@@ -65,14 +65,25 @@
 
         public static function deleteObject($examen)
         {
-            deleteById($examen.getID());
+            examenRepository::deleteById($examen->getID());
         }
 
-        //Por Nombre
+        //Por Fecha de creación
         public static function deleteByFechaCreacion($fechaCreacion)
         {
             $conexion = DB::conecta();
             $resultado = $conexion->exec("DELETE FROM examen WHERE fechaCreacion = '$fechaCreacion';");
+            if ($resultado) 
+            {
+                print "<p> Se han borrado $resultado registros.</p>";
+            }
+        }
+
+        //Por Fecha de creación
+        public static function deleteByIdProfesor($idProfesor)
+        {
+            $conexion = DB::conecta();
+            $resultado = $conexion->exec("DELETE FROM examen WHERE idProfesor = '$idProfesor';");
             if ($resultado) 
             {
                 print "<p> Se han borrado $resultado registros.</p>";
@@ -99,7 +110,7 @@
         public static function insert($examen)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO examen(fechaCreacion) values (" . $examen.getFechaCreacion() . ");");
+            $resultado = $conexion->exec("INSERT INTO examen(fechaCreacion) values ('" . $examen->getFechaCreacion() . "');");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";
@@ -116,11 +127,33 @@
         public static function updateFechaCreación($examen, $nuevoFechaCreacion)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE examen SET fechaCreacion = " . $examen.setFechaCreacion($nuevoFechaCreacion) . " WHERE id = " . $examen.getId() . ";");
+            $resultado = $conexion->exec("UPDATE examen SET fechaCreacion = '$nuevoFechaCreacion' WHERE id = '" . $examen->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
             }
+        }
+
+        //fechaCreacion
+        public static function updateIdProfesor($examen, $nuevoIdProfesor)
+        {
+            $conexion = DB::conecta();
+            $resultado = $conexion->exec("UPDATE examen SET idProfesor = '$nuevoIdProfesor' WHERE id = '" . $examen->getId() . "';");
+            if ($resultado) 
+            {
+                print "<p> Se han actualizado $resultado registros.</p>";
+            }
+        }
+
+
+
+
+        //-----------------------------FUNCIONES PROPIAS-------------------
+        public static function mostrarSelect($registro)
+        {
+            echo "ID: ".$registro['id']."<br>";
+            echo "Fecha de Creacion: ".$registro['fechaCreacion']."<br>";
+            echo "ID Profesor: ".$registro['idProfesor']."<br><br>";
         }
     }
 ?>

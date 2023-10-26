@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Database/DB.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/Proyecto1/Entidades/examentienepregunta.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Database/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/examentienepregunta.php';
 
 
-    class usuarioRepositorio
+    class exaTiePreRepository
     {
         private static $conexion;
 
@@ -12,26 +12,26 @@
         public static function findById($id)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM examentienepregunta WHERE id = '$id';");
+            $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                exaTiePreRepository::mostrarSelect($registro);
             }
         }
 
         public static function findObject($examentienepregunta)
         {
-            findById($examentienepregunta.getID());
+            exaTiePreRepository::findById($examentienepregunta->getID());
         }
 
         //Por idExamen
         public static function findByIdExamen($idExamen)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM examentienepregunta WHERE idExamen = '$idExamen';");
+            $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta WHERE idExamen = '$idExamen';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID ".$registro['id']."<br>";
+                exaTiePreRepository::mostrarSelect($registro);
             }
         }
 
@@ -39,10 +39,10 @@
         public static function findByIdPregunta($idPregunta)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT idExamen FROM examentienepregunta WHERE idPregunta = '$idPregunta';");
+            $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta WHERE idPregunta = '$idPregunta';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "IDExamen ".$registro['idExamen']."<br>";
+                exaTiePreRepository::mostrarSelect($registro);
             }
         }
 
@@ -50,10 +50,10 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM examentienepregunta;");
+            $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID: ".$registro['id']."<br>";
+                exaTiePreRepository::mostrarSelect($registro);
             }
         }
 
@@ -87,7 +87,7 @@
 
         public static function deleteObject($examentienepregunta)
         {
-            deleteById($examentienepregunta.getID());
+            exaTiePreRepository::deleteById($examentienepregunta->getID());
         }
 
         //Por IdPregunta
@@ -121,7 +121,7 @@
         public static function insert($examentienepregunta)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO examentienepregunta(idExamen, idPregunta) values (" . $examentienepregunta.getIdExamen() . ", " . $examentienepregunta.getIdPregunta() . ");");
+            $resultado = $conexion->exec("INSERT INTO examentienepregunta(idExamen, idPregunta) values ('" . $examentienepregunta->getIdExamen() . "', '" . $examentienepregunta->getIdPregunta() . "');");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";
@@ -135,10 +135,10 @@
 
         //--------------------------------ACTUALIZAR-----------------------------
         //idExamen
-        public static function updateIdExamen($examentienepregunta, $nuevoIdExamen)
+        public static function updateIdPregunta($examentienepregunta, $nuevaIdPregunta)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE examentienepregunta SET idExamen = " . $examentienepregunta.setIdExamen($nuevoIdExamen) . " WHERE id = " $examentienepregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE examentienepregunta SET idPregunta = '$nuevaIdPregunta' WHERE id = '". $examentienepregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
@@ -146,14 +146,24 @@
         }
 
         //idPregunta
-        public static function updateUrlFoto($examentienepregunta, $nuevoUrlFoto)
+        public static function updateIdExamen($examentienepregunta, $nuevoIdExamen)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("UPDATE examentienepregunta SET idPregunta = " . $examentienepregunta.setUrlFoto($nuevoUrlFoto) . " WHERE idPregunta = " $examentienepregunta.getId() . ";");
+            $resultado = $conexion->exec("UPDATE examentienepregunta SET idExamen = '$nuevaIdExamen' WHERE id = '". $examentienepregunta->getId() . "';");
             if ($resultado) 
             {
                 print "<p> Se han actualizado $resultado registros.</p>";
             }
+        }
+
+
+
+        //-----------------------------FUNCIONES PROPIAS-------------------
+        public static function mostrarSelect($registro)
+        {
+            echo "ID: ".$registro['id']."<br>";
+            echo "IDExamen: ".$registro['idExamen']."<br>";
+            echo "IDPregunta: ".$registro['idPregunta']."<br>";
         }
     }
 ?>
