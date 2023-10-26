@@ -15,7 +15,8 @@
             $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                exaTiePreRepository::mostrarSelect($registro);
+                // exaTiePreRepository::mostrarSelect($registro);
+                return $examentienepregunta = new ExamenTienePregunta($registro['id'], $registro['idExamen'], $registro['idPregunta']);
             }
         }
 
@@ -31,7 +32,8 @@
             $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta WHERE idExamen = '$idExamen';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                exaTiePreRepository::mostrarSelect($registro);
+                // exaTiePreRepository::mostrarSelect($registro);
+                return $examentienepregunta = new ExamenTienePregunta($registro['id'], $registro['idExamen'], $registro['idPregunta']);
             }
         }
 
@@ -42,7 +44,8 @@
             $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta WHERE idPregunta = '$idPregunta';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                exaTiePreRepository::mostrarSelect($registro);
+                // exaTiePreRepository::mostrarSelect($registro);
+                return $examentienepregunta = new ExamenTienePregunta($registro['id'], $registro['idExamen'], $registro['idPregunta']);
             }
         }
 
@@ -53,7 +56,8 @@
             $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                exaTiePreRepository::mostrarSelect($registro);
+                // exaTiePreRepository::mostrarSelect($registro);
+                return $examentienepregunta = new ExamenTienePregunta($registro['id'], $registro['idExamen'], $registro['idPregunta']);
             }
         }
 
@@ -164,6 +168,22 @@
             echo "ID: ".$registro['id']."<br>";
             echo "IDExamen: ".$registro['idExamen']."<br>";
             echo "IDPregunta: ".$registro['idPregunta']."<br>";
+        }
+
+        //Comprobar que el examentienepregunta existe
+        public static function existeExaTiePre($idExamen, $idPregunta)
+        {
+            $respuesta = false;
+ 
+            $conexion = DB::conecta();
+            $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM pregunta WHERE idExamen = '$idExamen' and idPregunta = '$idPregunta';");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                //Entra si existe el examentienepregunta
+                $respuesta = true;
+            }
+ 
+            return $respuesta;
         }
     }
 ?>

@@ -15,7 +15,8 @@
             $resultado = $conexion->query("SELECT id, fechaCreacion, idProfesor FROM examen WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                examenRepository::mostrarSelect($registro);
+                // examenRepository::mostrarSelect($registro);
+                return $examen = new Examen($registro['id'], $registro['fechaCreacion'], $registro['idProfesor']);
             }
         }
 
@@ -31,7 +32,8 @@
             $resultado = $conexion->query("SELECT id, fechaCreacion, idProfesor FROM examen WHERE fechaCreacion = '$fechaCreacion';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                examenRepository::mostrarSelect($registro);
+                // examenRepository::mostrarSelect($registro);
+                return $examen = new Examen($registro['id'], $registro['fechaCreacion'], $registro['idProfesor']);
             }
         }
 
@@ -42,7 +44,8 @@
             $resultado = $conexion->query("SELECT id, fechaCreacion, idProfesor FROM examen;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                examenRepository::mostrarSelect($registro);
+                // examenRepository::mostrarSelect($registro);
+                return $examen = new Examen($registro['id'], $registro['fechaCreacion'], $registro['idProfesor']);
             }
         }
 
@@ -154,6 +157,22 @@
             echo "ID: ".$registro['id']."<br>";
             echo "Fecha de Creacion: ".$registro['fechaCreacion']."<br>";
             echo "ID Profesor: ".$registro['idProfesor']."<br><br>";
+        }
+
+        //Comprobar que el examen existe
+        public static function existeExamen($fechaCreacion, $idProfesor)
+        {
+            $respuesta = false;
+
+            $conexion = DB::conecta();
+            $resultado = $conexion->query("SELECT id, fecha, idProfesor FROM examen WHERE fechaCreacion = '$fechaCreacion' and idProfesor = '$idProfesor';");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                //Entra si existe el examen
+                $respuesta = true;
+            }
+
+            return $respuesta;
         }
     }
 ?>

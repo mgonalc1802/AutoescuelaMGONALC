@@ -15,13 +15,15 @@
             $resultado = $conexion->query("SELECT id, nombre FROM categoria WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                categoriaRepository::mostrarSelect($registro);
+                // categoriaRepository::mostrarSelect($registro);
+                return $categoria = new Categoria($registro['id'], $registro['nombre']);
             }
         }
 
         public static function findObject($categoria)
         {
-            categoriaRepository::findById($categoria->getID());
+            // categoriaRepository::findById($categoria->getID());
+            return $categoria = new Categoria($registro['id'], $registro['nombre']);
         }
 
         //Por nombre
@@ -31,7 +33,8 @@
             $resultado = $conexion->query("SELECT id, nombre FROM categoria WHERE nombre = '$nombre';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                categoriaRepository::mostrarSelect($registro);
+                // categoriaRepository::mostrarSelect($registro);
+                return $categoria = new Categoria($registro['id'], $registro['nombre']);
             }
         }
 
@@ -130,6 +133,22 @@
         {
             echo "ID: ".$registro['id']."<br>";
             echo "Nombre: ".$registro['nombre']."<br><br>";
+        }
+
+        //Comprobar que el Categoria existe
+        public static function existeCategoria($nombre)
+        {
+            $respuesta = false;
+
+            $conexion = DB::conecta();
+            $resultado = $conexion->query("SELECT id, nombre FROM categoria WHERE nombre like = '$nombre';");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                //Entra si existe el Categoria
+                $respuesta = true;
+            }
+
+            return $respuesta;
         }
     }
 ?>

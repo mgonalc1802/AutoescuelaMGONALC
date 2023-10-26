@@ -15,7 +15,8 @@
             $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                intentoRepository::mostrarSelect($registro);
+                // intentoRepository::mostrarSelect($registro);
+                return $intento = new Intento($registro['id'], $registro['fecha'], $registro['JSONIntento']);
             }
         }
 
@@ -31,7 +32,8 @@
             $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento WHERE fecha = '$fecha';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                intentoRepository::mostrarSelect($registro);
+                // intentoRepository::mostrarSelect($registro);
+                return $intento = new Intento($registro['id'], $registro['fecha'], $registro['JSONIntento']);
             }
         }
 
@@ -42,7 +44,8 @@
             $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento WHERE JSONIntento = '$JSONIntento';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                intentoRepository::mostrarSelect($registro);
+                // intentoRepository::mostrarSelect($registro);
+                return $intento = new Intento($registro['id'], $registro['fecha'], $registro['JSONIntento']);
             }
         }
 
@@ -53,7 +56,8 @@
             $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM intento;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                intentoRepository::mostrarSelect($registro);
+                // intentoRepository::mostrarSelect($registro);
+                return $intento = new Intento($registro['id'], $registro['fecha'], $registro['JSONIntento']);
             }
         }
 
@@ -162,6 +166,22 @@
             echo "ID: ".$registro['id']."<br>";
             echo "Fecha y Hora: ".$registro['fecha']."<br>";
             echo "JSONIntento: ".$registro['JSONIntento']."<br>";
+        }
+
+        //Comprobar que el usuario existe
+        public static function existeIntento($JSONIntento)
+        {
+            $respuesta = false;
+
+            $conexion = DB::conecta();
+            $resultado = $conexion->query("SELECT id, fecha, JSONIntento FROM pregunta WHERE JSONIntento like '$JSONIntento';");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                //Entra si existe el intento
+                $respuesta = true;
+            }
+
+            return $respuesta;
         }
     }
 ?>

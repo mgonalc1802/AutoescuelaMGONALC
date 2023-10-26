@@ -15,7 +15,8 @@
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -31,7 +32,8 @@
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE enunciado = '$enunciado';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -42,7 +44,8 @@
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta1 = '$respuesta1';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -53,7 +56,8 @@
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta2 = '$respuesta2';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -64,7 +68,8 @@
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta3 = '$respuesta3';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -75,7 +80,8 @@
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE correcta = '$correcta';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -86,7 +92,8 @@
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE respuesta2 = '$respuesta2';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -94,10 +101,11 @@
         public static function findByTipoUrl($tipoUrl)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT enunciado FROM pregunta WHERE tipoUrl = '$tipoUrl';");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE tipoUrl = '$tipoUrl';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -105,10 +113,11 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM pregunta;");
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                preguntaRepository::mostrarSelect($registro);
+                // preguntaRepository::mostrarSelect($registro);
+                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
         }
 
@@ -335,6 +344,22 @@
             echo "TipoUrl: ".$registro['tipoURL']."<br>";
             echo "ID Categoria: ".$registro['idCategoria']."<br>";   
             echo "ID Dificultad: ".$registro['idDificultad']."<br><br>";
+        }
+
+        //Comprobar que el usuario existe
+        public static function existePregunta($enunciado, $correcta)
+        {
+            $respuesta = false;
+
+            $conexion = DB::conecta();
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE enunciado like '$enunciado' and  correcta like '$correcta';");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                //Entra si existe la pregunta
+                $respuesta = true;
+            }
+
+            return $respuesta;
         }
     }
 ?>

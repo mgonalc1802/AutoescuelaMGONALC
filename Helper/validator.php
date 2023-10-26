@@ -1,7 +1,12 @@
 <?php
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/sesion.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/login.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/usuario.php';
+
+
     class Validator
     {
-        private  $errores = [];
+        private static $errores = array();
 
         public static function rango($clave, $valor, $min, $max)
         {
@@ -11,11 +16,11 @@
             //Condición a cumplir
             if($valor <= $max && $valor >= $min)
             {
-                $parametro = true; //Si es correcto
+                $parametro = true; //Si es correcto 
             }
             else
             {
-                $this->$errores[$clave] = "Número fuera de rango."; //Agrega mensaje de error
+                validator::$errores[$clave] = "Número fuera de rango."; //Agrega mensaje de error
             }
 
             //Devuelves el parámetro
@@ -38,7 +43,7 @@
 
             if(empty($cadena)) 
             {
-                $this->$errores[$clave] = "La cadena no puede estar vacía."; //Agrega mensaje de error
+                validator::$errores[$clave] = "La cadena no puede estar vacía."; //Agrega mensaje de error
                 $parametro = true; // La cadena está vacía
             } 
             else 
@@ -60,19 +65,53 @@
             } 
             else 
             {
-                $this->$errores[$clave] = "Patrón no válido.";
+                validator::$errores[$clave] = "Patrón no válido.";
                 $parametro = false; // No es válido
             }
 
             return $parametro;
         }
 
+        public static function validarLogin($usuario, $contraseña)
+        {
+            //Si no hay ningún valor en el usuario
+            if(empty($usuario))
+            {
+                validator::$errores['nombre'] = "Por favor, introduce un usuario.";
+            }
+
+            //Si no hay ningún valor en la contraseña
+            if(empty($contraseña))
+            {
+                validator::$errores['contrasenia'] = "Por favor, introduzca su contraseña";
+            }
+
+            // if($user)
+            // {
+            //     //Si no existe un usuario
+            //     $errores['user'] = "<h3>Usuario No Encontrado</h3>";
+            // }
+
+            //Devuelve el array con los errores introducidos.
+            return validator::$errores;
+        }
+
+        public static function usuarioNoEncontrado()
+        {
+            //Si no existe un usuario
+            validator::$errores['user'] = "<h3>Usuario No Encontrado</h3>";
+
+            //Devuelve el array con los errores introducidos.
+            return validator::$errores;
+        }
+
+        
         public static function hayErrores()
         {
             $parametro = false;
             
             // Verificar si hay errores en la última ejecución
-            if(count($errores) > 0)
+            if(count(validator::$errores) > 0)
             {
                 $parametro = true;
             }
@@ -83,13 +122,13 @@
         public static function getErrores()
         {
             //Devuelve un array de errores
-            return $errores;
+            return validator::$errores;
         }
 
         public static function getError($clave)
         {
             //devuelve el error de una clave
-            return $errores[$clave];
+            return validator::$errores[$clave];
         }
 
     }

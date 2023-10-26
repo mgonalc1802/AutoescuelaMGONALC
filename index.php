@@ -19,14 +19,28 @@
 
     //_---------------------------PRUEBAS----------------------------------
 
-    // $usuario1 = new Usuario("6", "Javier", "javier1234", "profesor", "myAvatar.png");
+    $usuario1 = new Usuario("6", "Javier", "javir1234", "profesor", "myAvatar.png");
     // $examentienepregunta1 = new ExamenTienePregunta('1','1','2');
     // $categoria1 = new Categoria('5','Normas de Circulación');
     // $dificultad1 = new Dificultad('1', 'INICIAL');
 
     // $usuario1->setNombre("Alex");
     // echo $usuario1;
-    //usuarioRepository::findById('1');
+    // for($i = 0; $i < 7; $i++)
+    // {
+    //     $usuarios[$i] = usuarioRepository::findbyId($i + 1);
+    //     echo $usuarios[$i] . '<br>';
+    // }
+    
+    if(usuarioRepository::existeUsuario('Javer', 'javier1234'))
+    {
+        echo "Si existe";
+    }
+    else
+    {
+        echo "No existe";
+    }
+    
 
     // exaTiePreRepository::findObject($examentienepregunta1);
 

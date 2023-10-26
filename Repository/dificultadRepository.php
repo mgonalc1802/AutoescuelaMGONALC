@@ -15,14 +15,16 @@
             $resultado = $conexion->query("SELECT id, nombre FROM dificultad WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                dificultadRepository::mostrarSelect($registro);
+                // dificultadRepository::mostrarSelect($registro);
+                return $dificultad = new Dificultad($registro['id'], $registro['nombre']);
             }
         }
 
         //Encontrar por objeto
         public static function findObject($dificultad)
         {
-            dificultadRepository::findById($dificultad->getID());
+            // dificultadRepository::findById($dificultad->getID());
+            return $dificultad = new Dificultad($registro['id'], $registro['nombre']);
         }
 
         //Por nombre
@@ -33,7 +35,7 @@
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
                 dificultadRepository::mostrarSelect($registro);
-
+                return $dificultad = new Dificultad($registro['id'], $registro['nombre']);
             }
         }
 
@@ -44,7 +46,7 @@
             $resultado = $conexion->query("SELECT id, nombre FROM dificultad;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                dificultadRepository::mostrarSelect($registro);
+                return $dificultad = new Dificultad($registro['id'], $registro['nombre']);
             }
         }
 
@@ -136,6 +138,22 @@
         {
             echo "ID: ".$registro['id']."<br>";
             echo "Nombre: ".$registro['nombre']."<br><br>";
+        }
+
+        //Comprobar que el dificultad existe
+        public static function existeDificultad($nombre)
+        {
+            $respuesta = false;
+
+            $conexion = DB::conecta();
+            $resultado = $conexion->query("SELECT id, nombre FROM dificultad WHERE nombre like = '$nombre';");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                //Entra si existe el dificultad
+                $respuesta = true;
+            }
+
+            return $respuesta;
         }
     }
 ?>

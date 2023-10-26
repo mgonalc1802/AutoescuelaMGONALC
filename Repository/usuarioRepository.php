@@ -15,7 +15,8 @@
             $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                usuarioRepository::mostrarSelect($registro);
+                //usuarioRepository::mostrarSelect($registro);
+                return $usuario = new Usuario($registro['id'], $registro['nombre'], $registro['contrasenia'], $registro['rol'], $registro['urlFoto']);
             }
         }
 
@@ -32,7 +33,9 @@
             $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE nombre = '$nombre';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                usuarioRepository::mostrarSelect($registro);
+                //usuarioRepository::mostrarSelect($registro);
+                return $usuario = new Usuario($registro['id'], $registro['nombre'], $registro['contrasenia'], $registro['rol'], $registro['urlFoto']);
+                
             }
         }
 
@@ -43,7 +46,8 @@
             $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE rol = '$rol';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                usuarioRepository::mostrarSelect($registro);
+                //usuarioRepository::mostrarSelect($registro);
+                return $usuario = new Usuario($registro['id'], $registro['nombre'], $registro['contrasenia'], $registro['rol'], $registro['urlFoto']);
             }
         }
 
@@ -54,7 +58,8 @@
             $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE urlFoto = '$urlFoto';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                usuarioRepository::mostrarSelect($registro);
+                // usuarioRepository::mostrarSelect($registro);
+                return $usuario = new Usuario($registro['id'], $registro['nombre'], $registro['contrasenia'], $registro['rol'], $registro['urlFoto']);
             }
         }
 
@@ -65,7 +70,12 @@
             $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                usuarioRepository::mostrarSelect($registro);
+                //usuarioRepository::mostrarSelect($registro);
+                for($i = 0; $i < count($registro); $i++)
+                {
+                    // echo count($registro);
+                    return $usuario[$i] = new Usuario($registro['id'], $registro['nombre'], $registro['contrasenia'], $registro['rol'], $registro['urlFoto']);
+                }
             }
         }
 
@@ -211,5 +221,24 @@
             echo "Rol: ".$registro['rol']."<br>";
             echo "Foto: ".$registro['urlFoto']."<br><br>";
         }
+
+
+        //Comprobar que el usuario existe
+        public static function existeUsuario($nombre, $contraseña)
+        {
+            $respuesta = false;
+
+            $conexion = DB::conecta();
+            $resultado = $conexion->query("SELECT id, nombre, contrasenia, rol, urlFoto FROM usuario WHERE nombre like '$nombre' and  contrasenia like '$contraseña' ;");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                // echo "Entra en existe Usuario";
+                $respuesta = true;
+            }
+
+            return $respuesta;
+        }
+
+        
     }
 ?>
