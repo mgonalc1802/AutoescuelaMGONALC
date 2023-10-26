@@ -7,6 +7,8 @@
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Repository/categoriaRepository.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Repository/dificultadRepository.php';
 
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/validator.php';
+
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/usuario.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/pregunta.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/examen.php';
@@ -15,10 +17,12 @@
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/categoria.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Entidades/dificultad.php';
 
-    $usuario1 = new Usuario("6", "Javier", "javier1234", "profesor", "myAvatar.png");
-    $examentienepregunta1 = new ExamenTienePregunta('1','1','2');
-    $categoria1 = new Categoria('5','Normas de Circulación');
-    $dificultad1 = new Dificultad('1', 'INICIAL');
+    //_---------------------------PRUEBAS----------------------------------
+
+    // $usuario1 = new Usuario("6", "Javier", "javier1234", "profesor", "myAvatar.png");
+    // $examentienepregunta1 = new ExamenTienePregunta('1','1','2');
+    // $categoria1 = new Categoria('5','Normas de Circulación');
+    // $dificultad1 = new Dificultad('1', 'INICIAL');
 
     // $usuario1->setNombre("Alex");
     // echo $usuario1;
@@ -29,6 +33,25 @@
     //categoriaRepository::updateNombre($categoria1, $categoria1->getNombre());
 
     // dificultadRepository::findObject($dificultad1);
+
+    // $numeroValidar = 4;
+    // $numeroMax = 5;
+    // $numeroMin = 0;
+
+    //validator::rango('', $numeroValidar, $numeroMin, $numeroMax);
+    // if(validator::validarEmail("mara@gmail.com", 'gmail'))
+    // {
+    //     echo "Gmail Válido";
+    // }
+    
+    // if(validator::vacio('a'))
+    // {
+    //     echo "Cadena Vacía";
+    // }
+    // else
+    // {
+    //     echo "Cadena completa";
+    // }
 
 
 
