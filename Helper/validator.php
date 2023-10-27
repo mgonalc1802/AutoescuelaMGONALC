@@ -86,12 +86,6 @@
                 validator::$errores['contrasenia'] = "Por favor, introduzca su contraseña";
             }
 
-            // if($user)
-            // {
-            //     //Si no existe un usuario
-            //     $errores['user'] = "<h3>Usuario No Encontrado</h3>";
-            // }
-
             //Devuelve el array con los errores introducidos.
             return validator::$errores;
         }
@@ -100,6 +94,15 @@
         {
             //Si no existe un usuario
             validator::$errores['user'] = "<h3>Usuario No Encontrado</h3>";
+
+            //Devuelve el array con los errores introducidos.
+            return validator::$errores;
+        }
+
+        public static function usuarioExistente()
+        {
+            //Si no existe un usuario
+            validator::$errores['userE'] = "<h3>Usuario YA existente</h3>";
 
             //Devuelve el array con los errores introducidos.
             return validator::$errores;

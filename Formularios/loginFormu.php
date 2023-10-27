@@ -30,7 +30,7 @@
                 $erroresEnviar = validator::validarLogin($nombre, $contrasenia);
 
                 //Condición que indica que no hay errores
-                if(count($erroresEnviar) == 0)
+                if(validator::hayErrores() == 0)
                 {
                     //Condición que indica si el usuario introducido existe
                     if(usuarioRepository::existeUsuario($nombre, $contrasenia))

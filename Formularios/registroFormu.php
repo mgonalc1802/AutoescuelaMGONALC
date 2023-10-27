@@ -33,12 +33,17 @@
                 //Comrpueba que los campos anteriores no estén vacíos
                 $erroresEnviar = validator::validarLogin($nombre, $contrasenia);
 
-                if(count($erroresEnviar) == 0)
+                if(validator::hayErrores() == 0)
                 {
                     if(!usuarioRepository::existeUsuario($nombre, $contrasenia))
                     {
                         $usuarioNuevo = new Usuario("", $nombre, $contrasenia, $rol, 'myAvatar.png');
                         usuarioRepository::insert($usuarioNuevo);
+                    }
+                    else
+                    {
+                        //Mensaje de error en caso de que se encuentre el usuario.
+                        $erroresEnviar = validator::usuarioExistente();
                     }
                 }
             }
@@ -84,7 +89,12 @@
 
             <!-- Botón de enviar -->
             <input type = "submit" value = "Registrar"  name = "registrar">
-            <input type = "submit" value = "Redireccionar" name = "redireccionar">
+            <input type = "submit" value = "Redireccionar" name = "redireccionar"><br>
+
+            <?php
+                //Comprueba que este correcto, si no, muestra mensaje de error en rojo
+                echo((empty($erroresEnviar['userE'])) ? "" : "<span style = 'color: red' >".$erroresEnviar['userE']."</span>");
+            ?>
             
 
         </form>
