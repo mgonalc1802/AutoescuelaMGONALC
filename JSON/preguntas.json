@@ -1,0 +1,35 @@
+[
+    {
+        "id":1,
+        "enunciado":"¿Pueden los agentes de tráfico retirar su vehículo de la circulación si usted se niega a someterse a una prueba de alcoholemia?",
+        "respuesta1":"Sí, y además comete usted una violación de las normas de circulación.",
+        "respuesta2":"No.",
+        "respuesta3":"No, porque los agentes de tráfico no pueden comprobar si usted supera el límite máximo del nivel del alcohol si se niega a someterse a una prueba de alcoholemia.",
+        "url":"https://practicatest.com/views/layout/default/img/tests/B/93e03e65e9490fb99f6200df7ac1b2c8.JPG",
+        "tipoURL":"foto",
+        "idCategoria": "5",
+        "idDificultad": "2"
+    },
+    {
+        "id":2,
+        "enunciado":"¿En qué lugar se deberá colocar la placa de matrícula delantera si no pudiera ir colocada en el lugar habilitada para ello?",
+        "respuesta1":"En su lado izquierdo o derecho.",
+        "respuesta2":"Únicamente en su lado derecho.",
+        "respuesta3":"En su lado izquierdo o en la parte superior.",
+        "url":"https://practicatest.com/views/layout/default/img/tests/B/6bd463d6c3836e127b16db2a174156d1.jpg",
+        "tipoURL":"foto",
+        "idCategoria": "4",
+        "idDificultad": "1"
+    },
+    {
+        "id":3,
+        "enunciado":"¿Qué es HTML?",
+        "respuesta1":"Lenguaje de Programación.",
+        "respuesta2":"Lenguaje de marcado.",
+        "respuesta3":"Lenguaje de diseño",
+        "url":"https://practicatest.com/views/layout/default/img/tests/B/93e03e65e9490fb99f6200df7ac1b2c8.JPG",
+        "tipoURL":"foto",
+        "idCategoria": "5",
+        "idDificultad": "2"
+    }
+]

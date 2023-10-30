@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="JS/autoescuela.js"></script>
+    </head>
+    <body>
+        <div id = "examen"></div>
+        
+    </body>
+</html>
+
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Repository/usuarioRepository.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Repository/preguntaRepository.php';
@@ -19,7 +33,7 @@
 
     //_---------------------------PRUEBAS----------------------------------
 
-    $usuario1 = new Usuario("6", "Javier", "javir1234", "profesor", "myAvatar.png");
+    // $usuario1 = new Usuario("6", "Javier", "javir1234", "profesor", "myAvatar.png");
     // $examentienepregunta1 = new ExamenTienePregunta('1','1','2');
     // $categoria1 = new Categoria('5','Normas de Circulación');
     // $dificultad1 = new Dificultad('1', 'INICIAL');
@@ -32,14 +46,14 @@
     //     echo $usuarios[$i] . '<br>';
     // }
     
-    if(usuarioRepository::existeUsuario('Javier', 'javier1234'))
-    {
-        echo "Si existe";
-    }
-    else
-    {
-        echo "No existe";
-    }
+    // if(usuarioRepository::existeUsuario('Javier', 'javier1234'))
+    // {
+    //     echo "Si existe";
+    // }
+    // else
+    // {
+    //     echo "No existe";
+    // }
     
 
     // exaTiePreRepository::findObject($examentienepregunta1);
