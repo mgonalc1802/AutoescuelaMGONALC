@@ -1,15 +1,37 @@
-window.addEventListener("load", function()
+function Examen(plantilla, datos)
+{
+    this.plantilla = plantilla;
+    this.datos = datos;
+}
+
+function descargarDatos()
+{
+
+}
+
+function añadirPreguntas()
+{
+
+}
+
+function devolverExamen()
+{
+
+}
+
+Examen.prototype.pintar() = function()
 {
     var divExamen = document.getElementById("examen");
-
-    fetch("Plantillas/preguntas.html")
+    var examen = new Examen("Plantillas/preguntas.html", "JSON/preguntas.json");
+    
+    fetch(examen.plantilla)
         .then(x => x.text())
         .then(y => 
             {
                 var contenedor = document.createElement("div");
                 contenedor.innerHTML = y;
                 var pregunta = contenedor.firstChild;
-                fetch("JSON/preguntas.json")
+                fetch(examen.datos)
                     .then(x => x.json())
                     .then(y =>
                         {
@@ -72,4 +94,24 @@ window.addEventListener("load", function()
                             }
                         })
             })
-})
+}
+
+function almacenarExamen()
+{
+
+}
+
+function generarRespuestas()
+{
+
+}
+
+function siguiente()
+{
+
+}
+
+function visiblesTodas()
+{
+
+}

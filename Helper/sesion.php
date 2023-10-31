@@ -20,7 +20,7 @@
 
         public static function leerSesion($clave)
         {
-            return $_SESIION[$clave];
+            return $_SESSION[$clave];
         }
 
         public static function existeValorSesion($clave)
