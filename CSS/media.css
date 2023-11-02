@@ -1,0 +1,81 @@
+/* Estilos para el elemento <main> */
+main 
+{
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Estilos para el título */
+h1 
+{
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+/* Estilos para etiquetas y entradas de texto */
+label 
+{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] 
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para mensajes de error en rojo */
+span 
+{
+    color: red;
+}
+
+/* Estilos para botones de envío */
+input[type="submit"] 
+{
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Estilos para el botón de "Registrar" */
+input[name="registrar"] 
+{
+    background-color: #28a745;
+}
+
+/* Estilos para el botón de "Iniciar Sesión" */
+input[name="iniciarSesion"] 
+{
+    background-color: #007BFF;
+}
+
+/* Estilos para el elemento <main> cuando se visualiza en una pantalla pequeña */
+@media (max-width: 768px) 
+{
+    main 
+    {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    input[type="submit"] 
+    {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

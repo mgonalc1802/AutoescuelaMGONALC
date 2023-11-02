@@ -15,14 +15,24 @@ if (isset($_GET['menu']))
     {
         require_once $rutaBase.'/Formularios/registroFormu.php';
     }
-    if ($_GET['menu'] == "mantenimiento") 
+    if ($_GET['menu'] == "responderPreg") 
     {
-        require_once $rutaBase.'/Vistas/mantenimiento/mantenimiento.php';
+        require_once $rutaBase.'/Formularios/responderPreg.php';
      
     }
-    if ($_GET['menu'] == "listadoanimales") 
+    if ($_GET['menu'] == "admin") 
     {
-        require_once $rutaBase.'/Vistas/Mantenimiento/listadoanimales.php';
+        require_once $rutaBase.'/Formularios/administrador.php';
+     
+    }
+    if ($_GET['menu'] == "profesor") 
+    {
+        require_once $rutaBase.'/Formularios/profesor.php';
+     
+    }
+    if ($_GET['menu'] == "alumno") 
+    {
+        require_once $rutaBase.'/Formularios/alumno.php';
      
     }
     if ($_GET['menu'] == "listadovacunas") 

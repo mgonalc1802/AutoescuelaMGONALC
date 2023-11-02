@@ -58,16 +58,6 @@ window.addEventListener("load", function()
                                         respuestasMar[i].checked = false;
                                     }
                                 }
-
-                                pregAux.getElementsByClassName("desacDudosa")[0].onclick = function()
-                                {
-                                    var auxPadreDudosa = this;
-                                    while (!auxPadreDudosa.classList.contains("pregunta")) 
-                                    {
-                                        auxPadreDudosa = auxPadreDudosa.parentNode; 
-                                    }
-                                    auxPadreDudosa.getElementsByClassName("dudosa")[0].checked = false;
-                                }
                                 divExamen.appendChild(pregAux);
                             }
                         })

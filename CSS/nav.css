@@ -1,0 +1,36 @@
+/* styles.css */
+header {
+    background-color: #0a907c; /* Color de fondo del encabezado */
+    color: #fff; /* Color de texto del encabezado */
+    padding: 10px; /* Espaciado interno del encabezado */
+}
+
+#logo {
+    display: flex; /* Usa un layout flexible para alinear elementos horizontalmente */
+    align-items: center; /* Centra verticalmente los elementos dentro de #logo */
+}
+
+#logo img {
+    width: 150px; /* Ancho de la imagen del logotipo */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
+nav ul {
+    list-style: none; /* Elimina los marcadores de lista */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+    display: flex; /* Usa un layout flexible para alinear elementos horizontalmente */
+    
+}
+
+nav li {
+    margin-right: 20px; /* Espacio a la derecha entre elementos de la lista */
+}
+
+nav a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: #fff; /* Color del texto de los enlaces en el encabezado */
+}
+
+nav a:hover {
+    color: #007bff; /* Cambia el color del texto al pasar el mouse sobre los enlaces */
+}
