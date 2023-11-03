@@ -1,6 +1,7 @@
 window.addEventListener("load", function()
 {
     var divExamen = document.getElementById("examen");
+    var preguns = new Array();
 
     fetch("Plantillas/preguntas.html")
         .then(x => x.text())
@@ -44,8 +45,9 @@ window.addEventListener("load", function()
                                 pregAux.getElementsByClassName("idCategoria")[0].innerHTML = y[i].idCategoria;
                                 pregAux.getElementsByClassName("idDificultad")[0].innerHTML = y[i].idDificultad;
 
-                                pregAux.getElementsByClassName("borrar")[0].onclick = function()
+                                pregAux.getElementsByClassName("borrar")[0].onclick = function(ev)
                                 {
+                                    ev.preventDefault();
                                     var auxPadre = this;
                                     while (!auxPadre.classList.contains("pregunta")) 
                                     {
@@ -59,7 +61,14 @@ window.addEventListener("load", function()
                                     }
                                 }
                                 divExamen.appendChild(pregAux);
+
+                                //Guarda un array de preguntas
+                                preguns[i] = pregAux;
                             }
+                            preguns[0].style.display = "";
+                            preguns[1].style.display = "none";
+                            preguns[2].style.display = "none";
+
                         })
             })
 })

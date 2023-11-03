@@ -7,9 +7,9 @@ if (isset($_GET['menu']))
     {
         require_once 'index.php';
     }
-    if ($_GET['menu'] == "login") 
+    if ($_GET['menu'] == "examenes") 
     {
-        require_once $rutaBase.'/Formularios/loginFormu.php';
+        require_once $rutaBase.'/Formularios/examen.php';
     }
     if ($_GET['menu'] == "registro") 
     {
@@ -33,11 +33,9 @@ if (isset($_GET['menu']))
     if ($_GET['menu'] == "alumno") 
     {
         require_once $rutaBase.'/Formularios/alumno.php';
-     
-    }
-    if ($_GET['menu'] == "listadovacunas") 
-    {
-        require_once $rutaBase.'/Vistas/Mantenimiento/listadovacunas.php';
-     
     }    
+    if ($_GET['menu'] == "login") 
+    {
+        require_once $rutaBase.'/Formularios/loginFormu.php';
+    }   
 }

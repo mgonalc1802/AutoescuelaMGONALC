@@ -16,12 +16,12 @@
 
         public static function estaLogueado($clave)
         {
-            return existeValorSesion($clave);
+            return sesion::existeValorSesion($clave);
         }
 
         public static function logOut($ruta)
         {
-            cierraSesion();
+            sesion::cierraSesion();
 
             if(!empty($ruta))
             {

@@ -28,9 +28,5 @@
             return isset($_SESSION[$clave]);
         }
 
-        // public static function logOutF($ruta)
-        // {
-        //     logOut($ruta);
-        // }
     }
 ?>

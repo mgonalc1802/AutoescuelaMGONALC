@@ -1,6 +1,6 @@
-<main>
+<main id = "respoderPreg">
     <script src="JS/autoescuela.js"></script>
-    <form action = "">
+    <form action = "examen" id = "formRes">
         <div id = "examen">
 
         </div><br>

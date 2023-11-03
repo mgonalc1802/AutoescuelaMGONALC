@@ -1,0 +1,52 @@
+/*Pie de Página*/
+footer 
+{
+    background-color: #a8d5cc;
+    color: #000000;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.contenido 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contacto p 
+{
+    margin: 5px 0;
+    margin-right: 10px;
+}
+
+.contacto img 
+{
+    margin-right: 10px;
+}
+
+.contacto a 
+{
+    color: #000000;
+    text-decoration: none;
+}
+
+.contacto
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoPie 
+{
+    text-align: right;
+}
+
+.logoPie img 
+{
+    max-width: 250px;
+    height: auto;
+    border-bottom-right-radius: 10px;
+}

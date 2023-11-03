@@ -1,0 +1,40 @@
+/* Estilo para el elemento main */
+#responderPreg
+{
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* Estilo para el formulario */
+#formRes
+{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el div con id "examen" */
+#examen 
+{
+    margin-bottom: 20px;
+}
+
+/* Estilo para el botón con id "Enviar" */
+#Enviar 
+{
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#Enviar:hover 
+{
+    background-color: #005f8d;
+}

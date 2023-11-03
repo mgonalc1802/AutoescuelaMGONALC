@@ -1,0 +1,38 @@
+/*Cabecera*/
+header 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a8d5cc;
+    color: #f1a31c;
+    padding: 10px;
+    padding-left: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#logo 
+{
+    display: flex;
+    align-items: center;
+}
+
+#logo img 
+{
+    max-width: 100px;
+    margin-right: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#logo h1 
+{
+    margin: 0;
+    font-size: 30px;
+}
+
+#busqueda
+{
+    margin-right: 50px;
+}

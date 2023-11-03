@@ -1,0 +1,84 @@
+main 
+{
+    background-color: #b32121;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 625px;
+    height: 575px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    
+}
+
+main h1 
+{
+    margin-top: 200px;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+main label 
+{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.logInput
+{
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 11px;
+}
+
+.errores 
+{
+    color: red;
+    font-size: 14px;
+}
+
+#inicio, #registrar
+{
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#inicio
+{
+    background-color: #86aaa3;
+    color: #fff;
+}
+
+#inicio:hover
+{
+    background-color: #a8d5cc;
+}
+
+#registrar
+{
+    background-color: #7e9030;
+}
+
+#registrar:hover
+{
+    background-color: #a0b987;
+}
+
+
+#mostrarContrasenia 
+{
+    background-color: #ccc;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#mostrarContrasenia:hover {
+    background-color: #ddd;
+}

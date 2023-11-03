@@ -1,36 +1,44 @@
-/* styles.css */
-header {
-    background-color: #0a907c; /* Color de fondo del encabezado */
-    color: #fff; /* Color de texto del encabezado */
-    padding: 10px; /* Espaciado interno del encabezado */
+/*Navegación*/
+nav
+{
+    display: flex;
+    background: #95b78a;
+    align-items: center;
+    height: 40px;
 }
 
-#logo {
-    display: flex; /* Usa un layout flexible para alinear elementos horizontalmente */
-    align-items: center; /* Centra verticalmente los elementos dentro de #logo */
+nav ul 
+{
+    margin: 0 10px; 
+    padding: 0;
+    list-style: none;
 }
 
-#logo img {
-    width: 150px; /* Ancho de la imagen del logotipo */
-    margin-right: 10px; /* Espacio a la derecha de la imagen */
+nav li 
+{
+    margin: 0 5px 0 0; 
+    padding: 0;
+    float: left;
 }
 
-nav ul {
-    list-style: none; /* Elimina los marcadores de lista */
-    padding: 0; /* Elimina el relleno predeterminado de la lista */
-    display: flex; /* Usa un layout flexible para alinear elementos horizontalmente */
-    
+nav a 
+{
+    display: block;
+    padding: 5px 40px;
+    background: #93b484;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-nav li {
-    margin-right: 20px; /* Espacio a la derecha entre elementos de la lista */
+nav a:hover
+{
+    background-color: #d5c179;
+    border-radius: 5px;
 }
 
-nav a {
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    color: #fff; /* Color del texto de los enlaces en el encabezado */
-}
-
-nav a:hover {
-    color: #007bff; /* Cambia el color del texto al pasar el mouse sobre los enlaces */
-}
+/* #body
+{
+    background-image: url("../Recursos/fondo.png");
+    background-size: 100% 200%;
+} */

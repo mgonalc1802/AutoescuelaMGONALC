@@ -68,31 +68,32 @@
     <form  action = "?menu=login" method = "POST">
         <!-- Crea la caja de texto dónde el usuario podrá insertar datos -->
         <label>Usuario:<label>
-        <input type = "text" name = "nombre" ><br>
+        <input class = "logInput" type = "text" name = "nombre" ><br>
 
         <?php
             //Comprueba que este correcto, si no, muestra mensaje de error en rojo
-            echo((empty($erroresEnviar['nombre'])) ? "" : "<span style = 'color: red' >".$erroresEnviar['nombre']."</span>");
+            echo((empty($erroresEnviar['nombre'])) ? "" : "<span class = 'errores' >".$erroresEnviar['nombre']."</span>");
         ?>
         <br>
 
         <!-- Crea la caja de texto dónde el usuario podrá insertar datos -->
         <label>Contraseña:<label> 
-        <input type = "password" name = "contrasenia" ><br>
+        <input class = "logInput" type = "password" name = "contrasenia" ><br>
+        <button id = "mostrarContrasenia">Mostrar</button> <br>
 
         <?php
             //Comprueba que este correcto, si no, muestra mensaje de error en rojo
-            echo((empty($erroresEnviar['contrasenia'])) ? "" : "<span style = 'color: red' >".$erroresEnviar['contrasenia']."</span>");
+            echo((empty($erroresEnviar['contrasenia'])) ? "" : "<span class = 'errores' >".$erroresEnviar['contrasenia']."</span>");
         ?>
         <br>
 
         <!-- Botón de enviar -->
-        <input type = "submit" value = "Iniciar Sesión"  name = "iniciarSesion">
-        <input type = "submit" value = "Crear una cuenta"  name = "registrar">
+        <input type = "submit" id = "inicio" value = "Iniciar Sesión"  name = "iniciarSesion">
+        <input type = "submit" id = "registrar" value = "Crear una cuenta"  name = "registrar">
 
         <?php
             //Comprueba que este correcto, si no, muestra mensaje de error en rojo
-            echo((empty($erroresEnviar['user'])) ? "" : "<span style = 'color: red' >".$erroresEnviar['user']."</span>");
+            echo((empty($erroresEnviar['user'])) ? "" : "<span class = 'errores' >".$erroresEnviar['user']."</span>");
         ?>
 
     </form>
