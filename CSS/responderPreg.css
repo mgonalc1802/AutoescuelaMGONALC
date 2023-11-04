@@ -1,36 +1,86 @@
-#responderPreg
+.pregunta 
 {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
+    background-color: #ddedea;
+    width: 1000px;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dud
+{
+    float: right;
+}
+
+.resRec
+{
+    display: grid;
+    grid-template-columns: 200px 700px;
+}
+
+.recurso img
+{
+    border-radius: 25px;
+}
+
+.radios
+{
+    padding-top: 40px;
+    padding-left: 10px;
 }
 
 #formRes
 {
-    background-color: #fff;
-    border: 1px solid #ccc;
+    display: grid;
+    grid-template-rows: auto auto;
+    background-color: #cde5e0;
+}
+
+#examen
+{
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    height: 405px;
 }
 
-#examen 
+.btnBorrar
 {
-    margin-bottom: 20px;
+    float: right;
 }
 
-#Enviar 
+.ids
 {
-    background-color: #0077b6;
-    color: #fff;
-    border: none;
+    display: grid;
+    grid-template-rows: auto auto;
+    font-size: 17px;
+    padding-left: 50px;
+    font-weight: 700;
+}
+
+.btnSigAnt
+{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+#Enviar
+{
+    display: grid;
+    justify-content: end;
     padding: 10px 20px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    margin-right: 240px;
+    margin-left: 1120px;
+    background-color: #86aaa3;
+    color: #fff;
 }
 
-#Enviar:hover 
+#Enviar:hover
 {
-    background-color: #005f8d;
+    background-color: #b4cfb7
 }
