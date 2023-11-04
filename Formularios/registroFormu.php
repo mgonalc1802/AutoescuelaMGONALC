@@ -4,47 +4,56 @@
         //Partes del proyecto que utiliza el login
         require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/autocargador.php';
 
-
-        //Bucle que guarda los usuarios de la base de datos
-        //PREGUNTAAAR
-        for($i = 0; $i < 7; $i++)
+        if(Login::estaLogueado('user'))
         {
-            $usuarios[$i] = usuarioRepository::findbyId($i + 1);
-        }
-
-        //Acción que se produce cuando pulsas el botón registrar
-        if(isset($_POST['registrar']))
-        {
-            //Guarda los datos introducidos en las cajas de texto
-            $nombre = $_POST['nombre'];
-            $contrasenia = $_POST['contrasenia'];
-            $rol = $_POST['rol'];
-            // $urlFoto = $_POST['urlFoto'];
-
-            //Comprueba que los campos anteriores no estén vacíos
-            $erroresEnviar = validator::validarLogin($nombre, $contrasenia);
-
-            if(validator::hayErrores() == 0)
+            //Bucle que guarda los usuarios de la base de datos
+            //PREGUNTAAAR
+            for($i = 0; $i < 7; $i++)   
             {
-                if(!usuarioRepository::existeUsuario($nombre, $contrasenia))
+                $usuarios[$i] = usuarioRepository::findbyId($i + 1);
+            }
+
+            //Acción que se produce cuando pulsas el botón registrar
+            if(isset($_POST['registrar']))
+            {
+                //Guarda los datos introducidos en las cajas de texto
+                $nombre = $_POST['nombre'];
+                $contrasenia = $_POST['contrasenia'];
+                $rol = $_POST['rol'];
+                // $urlFoto = $_POST['urlFoto'];
+
+                //Comprueba que los campos anteriores no estén vacíos
+                $erroresEnviar = validator::validarLogin($nombre, $contrasenia);
+
+                if(validator::hayErrores() == 0)
                 {
-                    $usuarioNuevo = new Usuario("", $nombre, $contrasenia, $rol, 'myAvatar.png');
-                    usuarioRepository::insert($usuarioNuevo);
-                }
-                else
-                {
-                    //Mensaje de error en caso de que se encuentre el usuario.
-                    $erroresEnviar = validator::usuarioExistente();
+                    if(!usuarioRepository::existeUsuario($nombre, $contrasenia))
+                    {
+                        $usuarioNuevo = new Usuario("", $nombre, $contrasenia, $rol, 'myAvatar.png');
+                        usuarioRepository::insert($usuarioNuevo);
+                    }
+                    else
+                    {
+                        //Mensaje de error en caso de que se encuentre el usuario.
+                        $erroresEnviar = validator::usuarioExistente();
+                    }
                 }
             }
-        }
 
-        //Acción que se produce cuando pulsa el botón redirigir
-        if(isset($_POST['redireccionar']))
+            //Acción que se produce cuando pulsa el botón redirigir
+            if(isset($_POST['redireccionar']))
+            {
+                header("Location: ?menu=login");
+                // header("Location: ?menu=login&&usuario=" . $_GET["usuario"]);
+                exit;
+            }
+        }
+        else
         {
             header("Location: ?menu=login");
             exit;
         }
+        
     ?>
 
     <h1>Registrarse</h1>

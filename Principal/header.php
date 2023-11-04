@@ -1,3 +1,21 @@
+<?php
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/ProyectoAutoescuela/Helper/autocargador.php';
+
+    Autocargador::autocargar();
+
+    Sesion::iniciarSesion();
+
+    if(Login::estaLogueado('user'))
+    {
+        $usuario = $_GET["usuario"];
+    }
+    
+    if(isset($_POST['cerrarSesion']))
+    {
+        Login::logOut("?menu=login");
+    }
+?>  
+
 <header>
     <div id = "logo">
         <img src="/ProyectoAutoescuela/Recursos/logoPeque.png" width = "150px">
@@ -5,7 +23,10 @@
     </div>
 
     <div id = "btn">
-        <label>Usuario: <label><?php echo($_GET["usuario"]);?>
-        <button name = "cerrarSesion">Cerrar Sesion</button>
+        <form method = "POST">
+            <label>Usuario: <label><?php echo($usuario);?>
+            <button name = "cerrarSesion">Cerrar Sesion</button> 
+        </form>
+            
     </div>
 </header>

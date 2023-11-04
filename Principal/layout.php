@@ -6,7 +6,7 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>CAMINO AL VOLANTE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/loginRegis.css">
+    <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/login.css">
     <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/responderPreg.css">
     <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/header.css">
     <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/nav.css">

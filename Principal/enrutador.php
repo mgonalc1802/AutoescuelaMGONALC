@@ -5,7 +5,7 @@ if (isset($_GET['menu']))
     
     if ($_GET['menu'] == "inicio") 
     {
-        require_once 'index.php';
+        require_once $rutaBase.'/Formularios/inicio.php';
     }
     if ($_GET['menu'] == "examenes") 
     {

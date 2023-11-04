@@ -25,16 +25,17 @@ nav a
 {
     display: block;
     padding: 5px 40px;
-    background: #93b484;
+    background: #8b9b45e4;
     color: #000000;
     font-weight: bold;
     text-decoration: none;
+    border-radius: 40px;
 }
 
 nav a:hover
 {
     background-color: #d5c179;
-    border-radius: 5px;
+    border-radius: 40px;
 }
 
 /* #body

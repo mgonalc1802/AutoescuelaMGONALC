@@ -31,5 +31,16 @@
         "tipoURL":"foto",
         "idCategoria": "5",
         "idDificultad": "2"
+    },
+    {
+        "id":4,
+        "enunciado":"¿PRUEBAAA?",
+        "respuesta1":"Lenguaje de Programación.",
+        "respuesta2":"Lenguaje de marcado.",
+        "respuesta3":"Lenguaje de diseño",
+        "url":"https://practicatest.com/views/layout/default/img/tests/B/93e03e65e9490fb99f6200df7ac1b2c8.JPG",
+        "tipoURL":"foto",
+        "idCategoria": "5",
+        "idDificultad": "2"
     }
 ]

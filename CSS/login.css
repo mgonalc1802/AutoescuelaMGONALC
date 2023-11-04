@@ -1,32 +1,24 @@
-main 
+#log
 {
-    background-color: #b32121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddedea;
     padding: 20px;
     margin: 0 auto;
-    max-width: 625px;
-    height: 575px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    
+    height: 405px;
 }
 
-main h1 
+#log h1 
 {
-    margin-top: 200px;
     font-size: 25px;
     text-align: center;
-    margin-bottom: 20px;
     color: #333;
-}
-
-main label 
-{
-    display: block;
-    margin-bottom: 5px;
 }
 
 .logInput
 {
-    width: 95%;
+    width: 65%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -70,15 +62,39 @@ main label
     background-color: #a0b987;
 }
 
+#log form 
+{
+    background-color: #cde5e0;
+    width: 500px;
+    height: 280px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+#log form label:first-of-type 
+{
+    margin-right: 20px;
+}
+  
 
 #mostrarContrasenia 
 {
-    background-color: #ccc;
+    background-image: url("../Recursos/iconoOjoAbi.png");
+    background-position: right center;
+    background-size: 30px 18px;
+    background-repeat: no-repeat;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    width: 30px;
+    height: 20px;
+    background-color: #cde5e0;
 }
 
-#mostrarContrasenia:hover {
+#mostrarContrasenia:hover 
+{
     background-color: #ddd;
 }

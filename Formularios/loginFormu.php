@@ -1,4 +1,4 @@
-<main>
+<main id = "log">
     <?php
         //Partes del proyecto que utiliza el login
         require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/autocargador.php';
@@ -30,7 +30,7 @@
 
                     if($usuario->getRol() == "administrador")
                     {
-                        header("Location: ?menu=admin");
+                        header("Location: ?menu=admin&&usuario=$usuario");
                         exit;
                     }
                     if($usuario->getRol() == "profesor")
@@ -61,40 +61,44 @@
         }
     ?>
 
-    <!-- Título -->
-    <h1>Iniciar Sesión</h1>
+    
 
     <!-- Inicio del formulario -->
     <form  action = "?menu=login" method = "POST">
+        <!-- Título -->
+        <h1>Iniciar Sesión</h1>
         <!-- Crea la caja de texto dónde el usuario podrá insertar datos -->
-        <label>Usuario:<label>
-        <input class = "logInput" type = "text" name = "nombre" ><br>
+        <div>
+            <label>Usuario:</label>
+            <input class = "logInput" type = "text" name = "nombre" ><br>
 
-        <?php
-            //Comprueba que este correcto, si no, muestra mensaje de error en rojo
-            echo((empty($erroresEnviar['nombre'])) ? "" : "<span class = 'errores' >".$erroresEnviar['nombre']."</span>");
-        ?>
-        <br>
+            <?php
+                //Comprueba que este correcto, si no, muestra mensaje de error en rojo
+                echo((empty($erroresEnviar['nombre'])) ? "" : "<span class = 'errores' >".$erroresEnviar['nombre']."</span>");
+            ?>
+            <br>
 
-        <!-- Crea la caja de texto dónde el usuario podrá insertar datos -->
-        <label>Contraseña:<label> 
-        <input class = "logInput" type = "password" name = "contrasenia" ><br>
-        <button id = "mostrarContrasenia">Mostrar</button> <br>
+            <!-- Crea la caja de texto dónde el usuario podrá insertar datos -->
+            <label>Contraseña:</label> 
+            <input class = "logInput" type = "password" name = "contrasenia" >
+            <button id = "mostrarContrasenia" ></button> <br>
 
-        <?php
-            //Comprueba que este correcto, si no, muestra mensaje de error en rojo
-            echo((empty($erroresEnviar['contrasenia'])) ? "" : "<span class = 'errores' >".$erroresEnviar['contrasenia']."</span>");
-        ?>
-        <br>
+            <?php
+                //Comprueba que este correcto, si no, muestra mensaje de error en rojo
+                echo((empty($erroresEnviar['contrasenia'])) ? "" : "<span class = 'errores' >".$erroresEnviar['contrasenia']."</span>");
+            ?>
+            <br>
 
-        <!-- Botón de enviar -->
-        <input type = "submit" id = "inicio" value = "Iniciar Sesión"  name = "iniciarSesion">
-        <input type = "submit" id = "registrar" value = "Crear una cuenta"  name = "registrar">
+            <!-- Botón de enviar -->
+            <input type = "submit" id = "inicio" value = "Iniciar Sesión"  name = "iniciarSesion">
+            <input type = "submit" id = "registrar" value = "Crear una cuenta"  name = "registrar">
 
-        <?php
-            //Comprueba que este correcto, si no, muestra mensaje de error en rojo
-            echo((empty($erroresEnviar['user'])) ? "" : "<span class = 'errores' >".$erroresEnviar['user']."</span>");
-        ?>
+            <?php
+                //Comprueba que este correcto, si no, muestra mensaje de error en rojo
+                echo((empty($erroresEnviar['user'])) ? "" : "<span class = 'errores' >".$erroresEnviar['user']."</span>");
+            ?>
+        </div>
+        
 
     </form>
         
