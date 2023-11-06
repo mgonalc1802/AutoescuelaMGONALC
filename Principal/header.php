@@ -7,7 +7,12 @@
 
     if(Login::estaLogueado('user'))
     {
-        $usuario = $_GET["usuario"];
+        $usuario = Sesion::leerSesion('user');
+        $nombre = $usuario->getNombre();
+    }
+    else
+    {
+        $nombre = "¡Inicia Sesión!";
     }
     
     if(isset($_POST['cerrarSesion']))
@@ -24,7 +29,7 @@
 
     <div id = "btn">
         <form method = "POST">
-            <label>Usuario: <label><?php echo($usuario);?>
+            <label>Usuario: <?php echo($nombre);?><label>
             <button name = "cerrarSesion">Cerrar Sesion</button> 
         </form>
             

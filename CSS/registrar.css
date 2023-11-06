@@ -1,4 +1,4 @@
-#log
+#reg
 {
     display: flex;
     justify-content: center;
@@ -9,14 +9,14 @@
     height: 405px;
 }
 
-#log h1 
+#reg h1 
 {
     font-size: 25px;
     text-align: center;
     color: #333;
 }
 
-.logInput
+.regInput
 {
     width: 65%;
     padding: 10px;
@@ -25,13 +25,7 @@
     border-radius: 11px;
 }
 
-.errores 
-{
-    color: red;
-    font-size: 14px;
-}
-
-#inicio, #registrar
+#redireccionar, #registrarReg
 {
     display: inline-block;
     padding: 10px 20px;
@@ -43,55 +37,50 @@
     color: #fff;
 }
 
-#inicio:hover
+#redireccionar:hover
 {
     background-color: #a8d5cc;
 }
 
-#registrar
+#registrarReg
 {
     background-color: #7e9030;
 }
 
-#registrar:hover
+#registrarReg:hover
 {
     background-color: #a0b987;
 }
 
-#log form 
+#reg form 
 {
     background-color: #cde5e0;
     width: 500px;
-    height: 280px;
+    height: 320px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-
-#log form label:first-of-type 
+#reg form label:first-of-type 
 {
     margin-right: 20px;
 }
-  
 
-#mostrarContrasenia 
+
+select 
 {
-    background-image: url("../Recursos/iconoOjoAbi.png");
-    background-position: right center;
-    background-size: 30px 18px;
-    background-repeat: no-repeat;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    width: 30px;
-    height: 20px;
-    background-color: #cde5e0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-#mostrarContrasenia:hover 
+input[type="file"] 
 {
-    background-image: url("../Recursos/iconoOjoCer.png");
-    background-color: #cde5e0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
 }

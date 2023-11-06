@@ -8,7 +8,7 @@
             exit;
         }
     ?>
-    <script src="JS/autoescuela.js"></script>
+    <script src="JS/examen.js"></script>
     <form action = "examen" id = "formRes">
         <div id = "examen">
 

@@ -30,7 +30,7 @@
 
                     if($usuario->getRol() == "administrador")
                     {
-                        header("Location: ?menu=admin&&usuario=$usuario");
+                        header("Location: ?menu=admin");
                         exit;
                     }
                     if($usuario->getRol() == "profesor")
@@ -66,6 +66,8 @@
     <!-- Inicio del formulario -->
     <form  action = "?menu=login" method = "POST">
         <!-- Título -->
+        <script src = "JS/login.js"></script>
+
         <h1>Iniciar Sesión</h1>
         <!-- Crea la caja de texto dónde el usuario podrá insertar datos -->
         <div>
@@ -81,7 +83,7 @@
             <!-- Crea la caja de texto dónde el usuario podrá insertar datos -->
             <label>Contraseña:</label> 
             <input class = "logInput" type = "password" name = "contrasenia" >
-            <button id = "mostrarContrasenia" ></button> <br>
+            <button id = "mostrarContrasenia" ></button><br>
 
             <?php
                 //Comprueba que este correcto, si no, muestra mensaje de error en rojo

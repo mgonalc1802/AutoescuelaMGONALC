@@ -37,5 +37,37 @@ if (isset($_GET['menu']))
     if ($_GET['menu'] == "login") 
     {
         require_once $rutaBase.'/Formularios/loginFormu.php';
-    }   
+    }  
+    if ($_GET['menu'] == "visualizar") 
+    {
+        require_once $rutaBase.'/Formularios/visualizar.php';
+    } 
+    if ($_GET['menu'] == "realizar") 
+    {
+        require_once $rutaBase.'/Formularios/realizar.php';
+    }
+    if ($_GET['menu'] == "generarAle") 
+    {
+        require_once $rutaBase.'/Formularios/generarAle.php';
+    }
+    if ($_GET['menu'] == "manual") 
+    {
+        require_once $rutaBase.'/Formularios/manual.php';
+    }
+    if ($_GET['menu'] == "porDificultad") 
+    {
+        require_once $rutaBase.'/Formularios/porDificultad.php';
+    }
+    if ($_GET['menu'] == "validar") 
+    {
+        require_once $rutaBase.'/Formularios/validar.php';
+    }
+    if ($_GET['menu'] == "gestion") 
+    {
+        require_once $rutaBase.'/Formularios/validar.php';
+    }
+    if ($_GET['menu'] == "alumno") 
+    {
+        require_once $rutaBase.'/Formularios/alumno.php';
+    }
 }
