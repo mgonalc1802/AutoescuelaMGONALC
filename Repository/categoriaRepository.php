@@ -42,11 +42,15 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->query("SELECT id FROM categoria;");
+            $categorias;
+            $resultado = $conexion->query("SELECT id, nombre FROM categoria;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                echo "ID: ".$registro['id']."<br>";
+                $categoria = new Categoria($registro['id'], $registro['nombre']);
+                $categorias[] = $categoria;
             }
+
+            return $categorias;
         }
 
 

@@ -39,6 +39,13 @@
                 header("Location: ?menu=porDificultad");
                 exit;
             }
+
+            //Acción que se produce cuando pulsas el botón Generar Pregunta
+            if(isset($_POST['genPre']))
+            {
+                header("Location: ?menu=genPre");
+                exit;
+            }
         }
         else 
         {
@@ -62,6 +69,8 @@
                 <h2>Generar Examen</h2>
                 <input type = "submit" id = "manual" value = "Manual"  name = "manual">
                 <input type = "submit" id = "dificultad" value = "Por Dificultad"  name = "porDificultad">
+                <input type = "submit" id = "genPre" value = "Generar Pregunta"  name = "genPre">
+                
             </div>
         </div>
         

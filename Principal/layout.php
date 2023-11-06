@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/header.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/nav.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/registrar.css">
+        <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/generarPre.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/footer.css">
     </head>
 

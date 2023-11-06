@@ -29,8 +29,8 @@
 
     <div id = "btn">
         <form method = "POST">
-            <label>Usuario: <?php echo($nombre);?><label>
-            <button name = "cerrarSesion">Cerrar Sesion</button> 
+            <label>Usuario: <?php echo($nombre);?></label>
+            <button id = "cerSes" name = "cerrarSesion">Cerrar Sesion</button> 
         </form>
             
     </div>

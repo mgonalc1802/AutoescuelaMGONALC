@@ -241,7 +241,7 @@
         public static function insert($pregunta)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO pregunta(enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoUrl) values ('" . $pregunta->getEnunciado() . "', '" . $pregunta->getRespuesta1() . "', '" . $pregunta->getRespuesta2() . "', '" . $pregunta->getRespuesta3() . "', '" . $pregunta->getCorrecta() . "', '" . $pregunta->getUrl() . "' , '" . $pregunta->getTipoUrl() . "');");
+            $resultado = $conexion->exec("INSERT INTO pregunta(enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoUrl, idCategoria, idDificultad) values ('" . $pregunta->getEnunciado() . "', '" . $pregunta->getRespuesta1() . "', '" . $pregunta->getRespuesta2() . "', '" . $pregunta->getRespuesta3() . "', '" . $pregunta->getCorrecta() . "', '" . $pregunta->getUrl() . "' , '" . $pregunta->getTipoUrl() . "', '" . $pregunta->getIdCategoria() . "', '" . $pregunta->getIdDificultad() . "');");
             if ($resultado) 
             {
                 print "<p> Se han insertado $resultado registros.</p>";

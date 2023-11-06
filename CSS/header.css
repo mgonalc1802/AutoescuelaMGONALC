@@ -36,7 +36,25 @@ header
     font-size: 40px;
 }
 
-#busqueda
+#btn form label
 {
-    margin-right: 50px;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+#cerSes
+{
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: #86a9aa;
+    color: #000000;
+}
+
+button#cerSes:hover
+{
+    background-color: rgb(129, 187, 169);
 }

@@ -43,11 +43,15 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
+            $dificultades;
             $resultado = $conexion->query("SELECT id, nombre FROM dificultad;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
-                return $dificultad = new Dificultad($registro['id'], $registro['nombre']);
+                $dificultad = new Dificultad($registro['id'], $registro['nombre']);
+                $dificultades[] = $dificultad;
             }
+
+            return $dificultades;
         }
 
 

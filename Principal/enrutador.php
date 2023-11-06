@@ -70,4 +70,8 @@ if (isset($_GET['menu']))
     {
         require_once $rutaBase.'/Formularios/alumno.php';
     }
+    if ($_GET['menu'] == "genPre") 
+    {
+        require_once $rutaBase.'/Formularios/generarPre.php';
+    }
 }

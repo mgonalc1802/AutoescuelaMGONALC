@@ -1,0 +1,71 @@
+#genPreg
+{
+    background-color: #ddedea;
+    padding: 10px;
+}
+
+#generarPre h1 
+{
+    text-align: center;
+}
+
+#generarPre 
+{
+    background-color: #cde5e0;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#generarPre select, #generarPre input[type="file"]
+{
+    cursor: pointer;
+}
+
+#global label:first-of-type
+{
+    margin-right: 10px;
+}
+
+#corTipUrl
+{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#catDif
+{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.pregInput 
+{
+    width: 87%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 11px;
+}
+
+#agregarPre, #volver 
+{
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#agregarPre:hover, #volver:hover 
+{
+    background-color: #0056b3;
+}
+

@@ -9,19 +9,23 @@
         public $correcta;
         public $url;
         public $tipoUrl;
+        public $idCategoria;
+        public $idDificultad;
 
 
         //Constructor
-        public function __construct($id, $enunciado, $respuesta1, $respuesta2, $pregunta3, $correcta, $url, $tipoUrl)
+        public function __construct($id, $enunciado, $respuesta1, $respuesta2, $respuesta3, $correcta, $url, $tipoUrl, $idCategoria, $idDificultad)
         {
             $this->id = $id;
             $this->enunciado = $enunciado;
             $this->respuesta1 = $respuesta1;
             $this->respuesta2 = $respuesta2;
-            $this->respuesta3 = $prespuesta;
+            $this->respuesta3 = $respuesta3;
             $this->correcta = $correcta;
             $this->url = $url;
             $this->tipoUrl = $tipoUrl;
+            $this->idCategoria = $idCategoria;
+            $this->idDificultad = $idDificultad;
         }
 
         //GETTER'S
@@ -55,6 +59,12 @@
             return $this->respuesta3; 
         }
 
+        //Devuelve correcta
+        public function getCorrecta() 
+        { 
+            return $this->correcta; 
+        }
+
         //Devuelve url
         public function getUrl() 
         { 
@@ -67,42 +77,66 @@
             return $this->tipoUrl; 
         }
 
+        //Devuelve idCategoria
+        public function getIdCategoria() 
+        { 
+            return $this->idCategoria; 
+        }
+
+        //Devuelve idCDificultad
+        public function getIdDificultad() 
+        { 
+            return $this->idDificultad; 
+        }
+
 
         //SETTER'S
         //Asigna enunciado
-        public function setEnunciado() 
+        public function setEnunciado($enunciado) 
         { 
             $this->enunciado = $enunciado ; 
         }
 
         //Devuelve respuesta1
-        public function setRespuesta1() 
+        public function setRespuesta1($respuesta1) 
         { 
             $this->respuesta1 = $respuesta1; 
         }
 
         //Devuelve respuesta2
-        public function setRespuesta2() 
+        public function setRespuesta2($respuesta2) 
         { 
             $this->respuesta2 = $respuesta2; 
         }
 
         //Devuelve respuesta3
-        public function setRespuesta3() 
+        public function setRespuesta3($respuesta3) 
         { 
             $this->respuesta3 = $respuesta3; 
         }
 
         //Devuelve url
-        public function setUrl() 
+        public function setUrl($url) 
         { 
             $this->url = $url; 
         }
 
         //Devuelve tipoUrl
-        public function setTipoUrl() 
+        public function setTipoUrl($tipoUrl) 
         { 
             $this->tipoUrl = $tipoUrl; 
+        }
+
+        //Devuelve tipoUrl
+        public function setIdCategoria($idCategoria) 
+        { 
+            $this->idCategoria = $idCategoria; 
+        }
+
+        //Devuelve idDificultad
+        public function setIdDificultad($idDificultad) 
+        { 
+            $this->idDificultad = $idDificultad; 
         }
         
 

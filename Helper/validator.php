@@ -90,6 +90,36 @@
             return validator::$errores;
         }
 
+        public static function validarGenPre($enunciado, $respuesta1, $respuesta2, $respuesta3)
+        {
+            //Si no hay ningún valor en el enunciado
+            if(empty($enunciado))
+            {
+                validator::$errores['enunciado'] = "Por favor, introduce el enunciado.";
+            }
+
+            //Si no hay ningún valor en la respuesta1
+            if(empty($respuesta1) && empty($respuesta2) && empty($respuesta3))
+            {
+                validator::$errores['respuesta1'] = "Por favor, introduzca la respuesta 1.";
+            }
+
+            //Si no hay ningún valor en la respuesta2
+            if(empty($respuesta2))
+            {
+                validator::$errores['respuesta2'] = "Por favor, introduzca la respuesta 2.";
+            }
+
+            //Si no hay ningún valor en la respuesta3
+            if(empty($respuesta3))
+            {
+                validator::$errores['respuesta3'] = "Por favor, introduzca la respuesta 3.";
+            }
+
+            //Devuelve el array con los errores introducidos.
+            return validator::$errores;
+        }
+
         public static function usuarioNoEncontrado()
         {
             //Si no existe un usuario
@@ -103,6 +133,15 @@
         {
             //Si no existe un usuario
             validator::$errores['userE'] = "<h3>Usuario YA existente</h3>";
+
+            //Devuelve el array con los errores introducidos.
+            return validator::$errores;
+        }
+
+        public static function preguntaExistente()
+        {
+            //Si no existe un usuario
+            validator::$errores['preguntaE'] = "<h3>Pregunta YA existente</h3>";
 
             //Devuelve el array con los errores introducidos.
             return validator::$errores;
