@@ -5,38 +5,43 @@
         require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/autocargador.php';
 
         //Bucle que guarda los usuarios de la base de datos
-        //PREGUNTAAAR
-        for($i = 0; $i < 7; $i++)   
-        {
-            $usuarios[$i] = usuarioRepository::findbyId($i + 1);
-        }
+        $usuarios = usuarioRepository::findAll();
 
-        //Acción que se produce cuando pulsas el botón registrar
-        if(isset($_POST['registrarReg']))
-        {
-            //Guarda los datos introducidos en las cajas de texto
-            $nombre = $_POST['nombre'];
-            $contrasenia = $_POST['contrasenia'];
-            $rol = $_POST['rol'];
-            // $urlFoto = $_POST['urlFoto'];
+        $contador = count($usuarios) + 1;
 
-            //Comprueba que los campos anteriores no estén vacíos
-            $erroresEnviar = validator::validarLogin($nombre, $contrasenia);
-
-            if(validator::hayErrores() == 0)
+        
+            //Acción que se produce cuando pulsas el botón registrar
+            if(isset($_POST['registrarReg']))
             {
-                if(!usuarioRepository::existeUsuario($nombre, $contrasenia))
+                //Guarda los datos introducidos en las cajas de texto
+                $nombre = $_POST['nombre'];
+                $contrasenia = $_POST['contrasenia'];
+                $rol = $_POST['rol'];
+                // $urlFoto = $_POST['urlFoto'];
+
+                //Comprueba que los campos anteriores no estén vacíos
+                $erroresEnviar = validator::validarLogin($nombre, $contrasenia);
+
+                if(validator::hayErrores() == 0)
                 {
-                    $usuarioNuevo = new Usuario("", $nombre, $contrasenia, $rol, 'myAvatar.png');
-                    usuarioRepository::insert($usuarioNuevo);
-                }
-                else
-                {
-                    //Mensaje de error en caso de que se encuentre el usuario.
-                    $erroresEnviar = validator::usuarioExistente();
+                    if(!usuarioRepository::existeUsuario($nombre, $contrasenia))
+                    {
+                        foreach($usuarios as $usuario)
+                        {
+                            $usuarioNuevo = new Usuario($contador, $nombre, $contrasenia, $rol, 'myAvatar.png');
+                            $contador = $contador++;
+                        }
+                        uservalidRepository::insert($usuarioNuevo);
+                    }
+                    else
+                    {
+                        //Mensaje de error en caso de que se encuentre el usuario.
+                        $erroresEnviar = validator::usuarioExistente();
+                    }
                 }
             }
-        }
+            
+       
 
         //Acción que se produce cuando pulsa el botón redirigir
         if(isset($_POST['redireccionar']))

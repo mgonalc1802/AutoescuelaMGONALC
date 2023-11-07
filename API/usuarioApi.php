@@ -1,29 +1,38 @@
 <?php
-    require_once  $_SERVER['DOCUMENT_ROOT'].'/Helpers/autocargador.php';
+    // require_once  '../Repository/usuarioRepository.php';
+    // require_once  '../Entidades/Usuario.php';
+    // require_once '../API/usuarioApi.php';
+    require_once  $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/autocargador.php';
     
-    autocargar();
+    Autocargador::autocargar();
     
     if ($_SERVER['REQUEST_METHOD'] == "GET") 
     {
-        $id = $_GET['id'];
-        $user = usuarioRepository::findbyId($id);
+        // $id = $_GET['id'];
+        $usuarios = usuarioRepository::findAll();
+        $usuariosData = [];
     
-        if ($user == false) 
+        foreach($usuarios as $usuario)
         {
-            echo json_encode(array("success" => false));
-        } 
-        else 
-        {
-            $userData = array
-            (
-                "id" => $user->getId(),
-                "nombre" => $user->getNombre(),
-                "contrasenia" => $user->getContrasenia(),
-                "rol" => $user->getRol()
-                "urlFoto" => $user->getUrlFoto();
-            );
-    
-            echo json_encode($userData);
+            if ($usuario == false) 
+            {
+                echo json_encode(array("success" => false));
+            } 
+            else 
+            {
+                $userData = array
+                (
+                    "id" => $usuario->getId(),
+                    "nombre" => $usuario->getNombre(),
+                    "contrasenia" => $usuario->getContrasenia(),
+                    "rol" => $usuario->getRol(),
+                    "urlFoto" => $usuario->getUrlFoto()
+                );
+
+                $usuariosData[] = $userData;
+            }
         }
+
+        echo json_encode($usuariosData);
     }
 ?>

@@ -1,6 +1,8 @@
 <?php
-    require_once '../API/preguntaApi.php';
-    require_once  '../Repository/preguntaRepository.php';
+    // require_once '../API/preguntaApi.php';
+    // require_once  '../Repository/preguntaRepository.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/autocargador.php';
+
 
     
     // Autocargador::autocargar();  

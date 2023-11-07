@@ -23,7 +23,8 @@
                     'JS',
                     'JSON',
                     'Plantillas',
-                    'Principal'
+                    'Principal',
+                    'EntidadesJS'
                 ];
 
                 //Recorre los directorios hasta que encuentre el necesitado

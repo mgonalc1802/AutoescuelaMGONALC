@@ -10,4 +10,3 @@ function Pregunta(id, enunciado, respuesta1, respuesta2, respuesta3, tipoURL, ur
     this.idDificultad = idDificultad;
     this.idCategoria = idCategoria;
 }
-
