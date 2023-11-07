@@ -1,6 +1,7 @@
 #profesor
 {
     background-color: #ddedea;
+    padding: 20px;
 }
 
 #profesor form 
@@ -47,4 +48,9 @@
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
+}
+
+#dificultad:hover, #genPre:hover
+{
+    background-color: #a8d5cc;
 }

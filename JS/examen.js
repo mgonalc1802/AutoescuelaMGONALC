@@ -2,14 +2,14 @@ window.addEventListener("load", function()
 {
     //Inicializa las variables necesarias
     var divExamen = document.getElementById("examen"); //Coge el elemento cuya ID en html es "examen"
-    var preguns = new Array(); //Crea un array
+    var preguns = []; //Crea un array
     var contador = 0; 
+
 
     //Realizamos el AJAX
     fetch("Plantillas/preguntas.html")
         .then(x => x.text())
-        .then(y => 
-            {
+        .then(y => {
                 //Crea el contenedor a introducir los datos obtenidos
                 var contenedor = document.createElement("div");
 
@@ -20,7 +20,7 @@ window.addEventListener("load", function()
                 var pregunta = contenedor.firstChild;
 
                 //Realizamos el AJAX
-                fetch("JSON/preguntas.json")
+                fetch("API/preguntaApi.php")
                     .then(x => x.json()) //Lo trae en JSON
                     .then(y =>
                         {
@@ -35,6 +35,7 @@ window.addEventListener("load", function()
                                 pregAux.getElementsByClassName("respuesta2")[0].innerHTML = y[i].respuesta2;
                                 pregAux.getElementsByClassName("respuesta3")[0].innerHTML = y[i].respuesta3;
 
+                                console.log("hola");
                                 //Crea las respuestas
                                 var respuestas = pregAux.getElementsByClassName("resp");
                                 
@@ -52,6 +53,8 @@ window.addEventListener("load", function()
                                 {
                                     //Si es imagen crea un elemento imagen
                                     recurso = document.createElement("img");
+                                    recurso.style.width = "200px";
+                                    recurso.style.height = "200px";
                                 }
                                 else if(y[i].tipoURL == "video")
                                 {
@@ -129,6 +132,7 @@ window.addEventListener("load", function()
     //Método que avanza las preguntas
     function avanzarPregunta() 
     {
+        // cont= cont +1;
         //Comprueba que el contador sea menor que el array de preguntas
         if (contador < preguns.length - 1) 
         {
@@ -143,6 +147,8 @@ window.addEventListener("load", function()
     //Método que retrocede las preguntas
     function retrocederPregunta() 
     {
+        // cont= cont -1;
+
         //Si el contador es mayor de 0
         if (contador > 0) 
         {

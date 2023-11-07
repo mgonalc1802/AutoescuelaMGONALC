@@ -20,7 +20,7 @@
                 "nombre" => $user->getNombre(),
                 "contrasenia" => $user->getContrasenia(),
                 "rol" => $user->getRol()
-                "urlFoto" => $user->getURL();
+                "urlFoto" => $user->getUrlFoto();
             );
     
             echo json_encode($userData);

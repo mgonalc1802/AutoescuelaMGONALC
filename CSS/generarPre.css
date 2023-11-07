@@ -55,7 +55,7 @@
 
 #agregarPre, #volver 
 {
-    background-color: #007BFF;
+    background-color: #86aaa3;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -66,6 +66,6 @@
 
 #agregarPre:hover, #volver:hover 
 {
-    background-color: #0056b3;
+    background-color: #a8d5cc;
 }
 
