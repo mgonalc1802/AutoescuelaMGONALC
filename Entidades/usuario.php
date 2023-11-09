@@ -6,15 +6,17 @@
         public $contrasenia;
         public $rol;
         public $urlFoto;
+        public $validado;
 
         //Constructor
-        public function __construct($id, $nombre, $contrasenia, $rol, $urlFoto)
+        public function __construct($id, $nombre, $contrasenia, $rol, $urlFoto, $validado)
         {
             $this->id = $id;
             $this->nombre = $nombre;
             $this->contrasenia = $contrasenia;
             $this->rol = $rol;
             $this->urlFoto = $urlFoto;
+            $this->validado = $validado;
         }
 
         //GETTER'S
@@ -30,7 +32,7 @@
             return $this->nombre; 
         }
 
-        //Devuelve ni
+        //Devuelve contrasenia
         public function getContrasenia() 
         { 
             return $this->contrasenia; 
@@ -46,6 +48,12 @@
         public function getUrlFoto() 
         { 
             return $this->urlFoto; 
+        }
+
+        //Devuelve urlFoto
+        public function getValidado() 
+        { 
+            return $this->validado; 
         }
 
         //SETTER'S
@@ -71,6 +79,12 @@
         public function setUrlFoto($nuevourlFoto)
         {
             $this->urlFoto = $nuevourlFoto;
+        }
+
+        //Asigna validado
+        public function setValidado($nuevoValidado)
+        {
+            $this->validado = $nuevoValidado;
         }
 
         public function __toString()

@@ -25,6 +25,21 @@ if (isset($_GET['menu']))
         require_once $rutaBase.'/Formularios/administrador.php';
      
     }
+    if ($_GET['menu'] == "usuarioMan") 
+    {
+        require_once $rutaBase.'/Formularios/usuarioMan.php';
+     
+    }
+    if ($_GET['menu'] == "preguntaMan") 
+    {
+        require_once $rutaBase.'/Formularios/preguntaMan.php';
+     
+    }
+    if ($_GET['menu'] == "intentoMan") 
+    {
+        require_once $rutaBase.'/Formularios/intentoMan.php';
+     
+    }
     if ($_GET['menu'] == "profesor") 
     {
         require_once $rutaBase.'/Formularios/profesor.php';

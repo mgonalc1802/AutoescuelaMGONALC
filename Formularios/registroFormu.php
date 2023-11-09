@@ -28,10 +28,10 @@
                     {
                         foreach($usuarios as $usuario)
                         {
-                            $usuarioNuevo = new Usuario($contador, $nombre, $contrasenia, $rol, 'myAvatar.png');
+                            $usuarioNuevo = new Usuario($contador, $nombre, $contrasenia, $rol, 'myAvatar.png', 0);
                             $contador = $contador++;
                         }
-                        uservalidRepository::insert($usuarioNuevo);
+                        usuarioRepository::insert($usuarioNuevo);
                     }
                     else
                     {

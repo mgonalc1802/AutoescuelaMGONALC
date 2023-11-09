@@ -18,7 +18,6 @@
         <li><a href = "?menu=generarExamen">Generar Examen</a></li>
         <li><a href = "?menu=examenes">Examenes</a></li>
         <li><a href = "?menu=responderPreg">Examen</a></li>
-        <li><a href = "?menu=responderPreg">Mantenimiento</a></li>
     </ul>
     <!-- Introducir php para comprobar el rol y mostrar una u otra opción -->
    
@@ -36,9 +35,17 @@
         <li><a href = "?menu=gestion">Gestión</a></li>
         <li><a href = "?menu=examenes">Generar</a></li>
         <li><a href = "?menu=responderPreg">Realizar Examen</a></li>
-        <li><a href = "?menu=responderPreg">Mantenimiento</a></li>
-    </ul>
-   
+        <li><a>Mantenimiento</a></li>
+            <ul class = "submenu">
+                <li><a href = "?menu=manEx">Examen</a></li>
+                <li><a href = "?menu=manEx">Usuario</a></li>
+                <li><a href = "?menu=manEx">Categoria</a></li>
+                <li><a href = "?menu=manEx">Pregunta</a></li>
+                <li><a href = "?menu=manEx">Dificultad</a></li>
+                <li><a href = "?menu=manEx">ExamenPreguntas</a></li>
+                <li><a href = "?menu=manEx">Intento</a></li>
+            </ul>
+    </ul>   
 </nav>
 
 <?php

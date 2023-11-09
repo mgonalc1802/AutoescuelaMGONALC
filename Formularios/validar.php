@@ -6,37 +6,55 @@
             $user = Sesion::leerSesion('user');
             $rol = $user->getRol();
 
-            if($rol == "administrador")
-            {    $contadorBtn = 0;
-                $contador = 1;
-                $usuarios = uservalidRepository::findAll();
+            if(isset($_POST['volverAd']))
+            {
+                header("Location: ?menu=admin");
+                exit;
+            }
 
-            
-            
-        
-        
+            if($rol == "administrador")
+            {    
+                $contador = 0;
+                $contadorV = 0;
+                $usuarios = usuarioRepository::findByValidado(0);
+                $usuariosValidados = usuarioRepository::findByValidado(1);        
     ?>
+
     <form action = "?menu=validar" method = "POST">
         <h1>Gestión De Usuarios</h1>
 
-        <table>
-            <thead>
-                <tr>
-                    <th id = "ordNombre">NOMBRE</th>
-                    <th id = "ordRol">ROL</th>
-                    <th id = "accion">ACCION</th>
-                </tr>
-            </thead>
+        <div id = "containerVal">
+            <div>
+                <h2>Validar</h2>
 
-            <tbody id = "cuerpoTab">
-                <?php            
+                <table>
+                    <thead>
+                        <tr>
+                            <th id = "ordNombre">NOMBRE</th>
+                            <th id = "ordRol">ROL</th>
+                            <th id = "accion">ACCION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id = "cuerpoTab">
+                        <?php            
                             foreach($usuarios as $usuario) 
                             {
                                 echo "<tr><td>" . $usuario->getNombre() . "</td>";
-                                echo "<td>" . $usuario->getRol() ."</td>";
-                                echo "<td>
+                        ?>
+
+                                <td>
+                                    <select name = 'rol'>
+                                        <option value = 'profesor' <?php if ($usuario->getRol() == 'profesor') echo 'selected'; ?>>Profesor</option>
+                                        <option value = 'estudiante' <?php if ($usuario->getRol() == 'estudiante') echo 'selected'; ?>>Estudiante</option>
+                                    </select>
+                                </td>
+                            <?php
+
+                                echo "<td><center>
                                         <input class = 'validarUser' type = 'submit' value = 'Validar' name = 'validarUser" . $contador ."'>
                                         <input class = 'denegarUser' type = 'submit' value = 'Denegar' name = 'denegarUser" . $contador ."'>
+                                        </center>
                                     </td>";
                                 $contador = $contador+ 1;
                             }
@@ -45,19 +63,85 @@
                             {
                                 if(isset($_POST['validarUser' . $i]))
                                 {
-                                    $user = uservalidRepository::findById(13);
-                                    echo $user;
-                                    // usuarioRepository::insert($user);
-                                    // uservalidRepository::deleteObject($user);
-                                    echo "<h2>Validado con éxito.</h2>";
+                                    usuarioRepository::updateValidado($usuarios[$i], '1');
+                                    header("Location: ?menu=validar");
+                                    exit;
                                 }
 
                                 if(isset($_POST['denegarUser' . $i]))
                                 {
-                                    $user = uservalidRepository::findById();
-                                    uservalidRepository::deleteObject($user);
+                                    usuarioRepository::deleteObject($usuarios[$i]);
+                                    header("Location: ?menu=validar");
+                                    exit;
+                                }
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
 
-                                    echo "adios";
+            <div>
+                <h2>Controlar</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NOMBRE</th>
+                            <th>ROL</th>
+                            <th>URL</th>
+                            <th>ACCION</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+            <?php        
+                        foreach($usuariosValidados as $usuarioVal) 
+                        {    
+                            // echo "<tr><td>" . $usuarioVal->getNombre() . "</td>";
+            ?>
+                        <tr>
+                            <td>
+                                <input name = "nombre<?php echo $contadorV ?>" type = "text" value = '<?php echo $usuarioVal->getNombre() ?>'>
+                            </td> 
+                            <td>
+                                <select name = 'rol<?php echo $contadorV ?>'>
+                                    <option value = 'profesor' <?php if ($usuarioVal->getRol() == 'profesor') echo 'selected'; ?>>Profesor</option>
+                                    <option value = 'estudiante' <?php if ($usuarioVal->getRol() == 'estudiante') echo 'selected'; ?>>Estudiante</option>
+                                </select>
+                            </td>
+                            <?php
+                                echo "<td>" . $usuarioVal->getUrlFoto() . "</td>";
+                            ?>
+                            <td>
+                                <center>
+                                    <input class = 'modificar' type = 'submit' value = 'Modificar' name = 'modificarUser<?php echo $contadorV ?>'>
+                                    <input class = 'borrar' type = 'submit' value = 'Borrar' name = 'borrarUser<?php echo $contadorV ?>'>
+                                </center>
+                            </td>
+                        <?php
+                            $contadorV = $contadorV + 1;
+                        }
+
+                        foreach($usuarios as $usuario) 
+                        {
+                            for($i = 0; $i < $contadorV; $i++)
+                            {
+                                if(isset($_POST['modificarUser' . $i]))
+                                {
+                                    // usuarioRepository::updateById();
+                                    $nombre = $_POST['nombre'.$i];
+                                    $rol = $_POST['rol'.$i];
+                                    usuarioRepository::updateNombre($usuariosValidados[$i], $nombre); 
+                                    usuarioRepository::updateRol($usuariosValidados[$i], $rol); 
+                                    // header("Location: ?menu=validar");
+                                    // exit;
+                                }
+
+                                if(isset($_POST['borrarUser' . $i]))
+                                {
+                                    usuarioRepository::deleteObject($usuariosValidados[$i]);
+                                    // header("Location: ?menu=validar");
+                                    // exit;
                                 }
                             }
                         }
@@ -67,9 +151,17 @@
                         header("Location: ?menu=login");
                         exit;
                     }
-                ?>
+                }
+            ?>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <br>
+
+        <input id = 'volverAd' type = "submit" value = "Volver" name = 'volverAd'>
     </form>
 </main>

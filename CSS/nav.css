@@ -38,8 +38,25 @@ nav a:hover
     border-radius: 40px;
 }
 
-/* #body
+nav li ul:first-child 
 {
-    background-image: url("../Recursos/fondo.png");
-    background-size: 100% 200%;
-} */
+    display:none;
+    min-width: 140px;
+}
+
+nav li ul li ul 
+{
+    right:-140px;
+    top:0px;
+}
+
+.submenu
+{
+    display: none;
+    background-color: #444; /* Color de fondo del submenú */
+    top: 100%;
+    left: 0;
+}
+
+
+  

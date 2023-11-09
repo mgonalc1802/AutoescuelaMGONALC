@@ -1,0 +1,37 @@
+#listadoUser
+{
+    background-color: #ddedea;
+    padding: 20px;
+}
+
+#listadoUser form 
+{
+    text-align: center; 
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 20px; 
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    background-color: #cde5e0;
+}
+
+#listadoUser table tbody
+{
+    background-color: #cac7bf;
+}
+
+.agregar
+{
+    background-color: #86aaa3;
+    color: #fff; 
+    padding: 10px 20px; 
+    margin: 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.agregar:hover
+{
+    background-color: #a8d5cc;
+}

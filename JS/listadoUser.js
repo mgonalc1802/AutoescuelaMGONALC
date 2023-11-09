@@ -42,28 +42,23 @@ window.addEventListener("load", function ()
     //Obtiene las variables necesarias que van a intervenir
     var cuerpo = document.getElementById("cuerpoTab");
 
-    //Variables de input
-    var nombre = document.getElementById("nombreTab");
-    var rol = document.getElementById("rolTab");
-
-    //Botón para añadir
-    var boton = document.getElementById("botonTab");
-
     //Variables para ordenar
     var ordNombre = document.getElementById("ordNombre");
     var ordRol = document.getElementById("ordRol");
+    var ordUrl = document.getElementById("ordUrl");
 
     ordNombre.sentido = 1;
     ordRol.sentido = 1;
+    ordUrl.sentido = 1;
 
     const usuarios = [];
-    const btnsAceptar = [];
+    const btnsEditar = [];
+    const btnsEliminar = [];
 
     fetch("API/usuarioApi.php")
         .then(x => x.json()) //Trae la información en JSON
         .then(y => 
             {
-                
                 //Crea un for para manejar cada usuario como propio
                 for(let i = 0; i < y.length; i++)
                 {
@@ -74,15 +69,13 @@ window.addEventListener("load", function ()
                 cuerpo.innerHTML = muestra(usuarios);
                 for(let i = 0; i < y.length; i++)
                 {
-                    btnsAceptar[i] = document.getElementsByClassName("aceptar")[i];
+                    btnsEditar[i] = document.getElementsByClassName("editar")[i];
+                    btnsEliminar[i] = document.getElementsByClassName("eliminar")[i];
                 }
-
-                console.log(btnsAceptar)
-
                 
             })
 
-            console.log(btnsAceptar);
+
     //Función que muestra en el HTML los elementos necesarios
     function muestra(usuarios)
     {
@@ -90,7 +83,8 @@ window.addEventListener("load", function ()
                             {
                                 return total + "<tr><td>" + value.nombre + "</td>" +
                                             "<td>" + value.rol + "</td>" +
-                                            "<td><button class = 'aceptar'>Aceptar</button><button class = 'denegar'>Denegar</button></td></tr>";
+                                            "<td>" + value.urlFoto + "</td>" +
+                                            "<td><button class = 'editar'>Editar</button><button class = 'eliminar'>Eliminar</button></td></tr>";
                             }, "")
     }
 
