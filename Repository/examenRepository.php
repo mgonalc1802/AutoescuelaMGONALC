@@ -113,11 +113,12 @@
         public static function insert($examen)
         {
             $conexion = DB::conecta();
-            $resultado = $conexion->exec("INSERT INTO examen(fechaCreacion) values ('" . $examen->getFechaCreacion() . "');");
-            if ($resultado) 
-            {
-                print "<p> Se han insertado $resultado registros.</p>";
-            }
+            // $resultado = $conexion->exec("INSERT INTO usuario(fechaCreacion, idProfesor) values ('" . $examen->getFechaCreacion() . "', '" . $usuario->getIdProfesor() . "');");
+            $resultado = $conexion->exec("INSERT INTO examen(fechaCreacion, idProfesor)  values ('" . $examen->getFechaCreacion() . "', '" . $examen->getIdProfesor() . "');");
+            // if ($resultado) 
+            // {
+            //     print "<p> Se han insertado $resultado registros.</p>";
+            // }
         }
 
 

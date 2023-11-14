@@ -20,8 +20,8 @@ window.addEventListener("load", function()
                 var pregunta = contenedor.firstChild;
 
                 //Realizamos el AJAX
-                var cuerpo = new FormData();
-                cuerpo.append('clave', $clave);
+                // var cuerpo = new FormData();
+                // cuerpo.append('clave', $clave);
                 fetch("API/preguntaApi.php",{method: "GET"}) 
                     .then(x => x.json()) //Lo trae en JSON
                     .then(y =>

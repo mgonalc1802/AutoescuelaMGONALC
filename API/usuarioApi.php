@@ -35,4 +35,13 @@
 
         echo json_encode($usuariosData);
     }
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST") 
+    {
+        $usuarioObt = json_decode(file_get_contents("php://input"));
+        
+        $usuario = usuarioRepository::findByName($usuarioObt);
+
+        echo json_encode($usuario->getID());
+    }
 ?>

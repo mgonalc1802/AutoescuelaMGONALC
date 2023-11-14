@@ -3,12 +3,14 @@
     {
         public $id;
         public $fechaCreacion;
+        public $idProfesor;
 
         //Constructor
-        public function __construct($id, $fechaCreacion)
+        public function __construct($id, $fechaCreacion, $idProfesor)
         {
             $this->id = $id;
             $this->fechaCreacion = $fechaCreacion;
+            $this->idProfesor = $idProfesor;
         }
 
         //GETTER'S
@@ -24,11 +26,23 @@
             return $this->fechaCreacion; 
         }
 
+        //Devuelve idProfesor
+        public function getIdProfesor() 
+        { 
+            return $this->idProfesor; 
+        }
+
         //SETTER'S
-        //Asigna nombre
+        //Asigna fechaCreacion
         public function setFechaCreacion($nuevaFechaCreacion)
         {
             $this->fechaCreacion = $nuevaFechaCreacion;
+        }
+
+        //Asigna idProfesor
+        public function setIdProfesor($nuevaidProfesor)
+        {
+            $this->idProfesor = $nuevaidProfesor;
         }
 
         public function __toString()

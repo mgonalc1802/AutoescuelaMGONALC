@@ -12,6 +12,12 @@
                 exit;
             }
 
+            if(isset($_POST['añadirVa']))
+            {
+                header("Location: ?menu=registro");
+                exit;
+            }
+
             if($rol == "administrador")
             {    
                 $contador = 0;
@@ -122,27 +128,26 @@
                             $contadorV = $contadorV + 1;
                         }
 
-                        foreach($usuarios as $usuario) 
+                        for($i = 0; $i < $contadorV; $i++)
                         {
-                            for($i = 0; $i < $contadorV; $i++)
+                            if(isset($_POST['modificarUser' . $i]))
                             {
-                                if(isset($_POST['modificarUser' . $i]))
-                                {
-                                    // usuarioRepository::updateById();
-                                    $nombre = $_POST['nombre'.$i];
-                                    $rol = $_POST['rol'.$i];
-                                    usuarioRepository::updateNombre($usuariosValidados[$i], $nombre); 
-                                    usuarioRepository::updateRol($usuariosValidados[$i], $rol); 
-                                    // header("Location: ?menu=validar");
-                                    // exit;
-                                }
+                                // usuarioRepository::updateById();
+                                $nombre = $_POST['nombre'.$i];
+                                $rol = $_POST['rol'.$i];
+                                // echo $rol;
+                                usuarioRepository::updateNombre($usuariosValidados[$i], $nombre); 
+                                usuarioRepository::updateRol($usuariosValidados[$i], $rol); 
 
-                                if(isset($_POST['borrarUser' . $i]))
-                                {
-                                    usuarioRepository::deleteObject($usuariosValidados[$i]);
-                                    // header("Location: ?menu=validar");
-                                    // exit;
-                                }
+                                // header("Location: ?menu=validar");
+                                // exit;
+                            }
+
+                            if(isset($_POST['borrarUser' . $i]))
+                            {
+                                usuarioRepository::deleteObject($usuariosValidados[$i]);
+                                // header("Location: ?menu=validar");
+                                // exit;
                             }
                         }
                     }
@@ -156,12 +161,12 @@
 
                     </tbody>
                 </table>
-            </div>
-        </div>
-        
-        
-        <br>
+                <br>
+                <input id = 'añadirVa' type = "submit" value = "Añadir" name = 'añadirVa'>
 
+            </div>
+
+        </div>
         <input id = 'volverAd' type = "submit" value = "Volver" name = 'volverAd'>
     </form>
 </main>
