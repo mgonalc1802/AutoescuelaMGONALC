@@ -38,4 +38,13 @@
         echo json_encode($preguntasData);
 
     }
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST") 
+    {
+        $dificultadObt = json_decode(file_get_contents("php://input"));
+                    
+        $preguntas = preguntaRepository::findByDificultad($dificultadObt);
+
+        echo json_encode($preguntas);
+    }
 ?>

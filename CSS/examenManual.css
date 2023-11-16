@@ -1,0 +1,55 @@
+#genExaMan 
+{
+    background-color: #ddedea;
+    padding: 20px;
+}
+
+#generarExa 
+{
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    background-color: #cde5e0;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+}
+
+#generarExa h1 
+{
+    text-align: center;
+}
+
+#titulos
+{
+    display: flex;
+    justify-content: space-around;
+}
+#generarExa #global 
+{
+    margin-top: 20px;
+}
+
+#tablas
+{
+    display: flex;
+}
+
+#tablas table:first-child
+{
+    margin-right: 20px;
+}
+
+
+#generarExa th, td 
+{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#nombreProf 
+{
+    font-weight: bold;
+    color: #333;
+}
+

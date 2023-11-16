@@ -1,0 +1,27 @@
+#genExaDif
+{
+    background-color: #ddedea;
+    padding: 20px;
+}
+
+#generarExaDif
+{
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    background-color: #cde5e0;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+}
+
+#completo
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+#completo div label
+{
+    margin-right: 20px;
+}
+

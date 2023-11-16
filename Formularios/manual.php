@@ -9,6 +9,24 @@
 
         if($rol == 'administrador' || $rol == 'profesor')
         {
+            if($rol == 'administrador')
+            {
+                if(isset($_POST['volver']))
+                {
+                    header("Location: ?menu=admin");
+                    exit;
+                }
+            }
+
+            if($rol == 'profesor')
+            {
+                if(isset($_POST['volver']))
+                {
+                    header("Location: ?menu=profesor");
+                    exit;
+                }
+            }
+            
 ?>
 
 <main id = "genExaMan">
@@ -17,33 +35,40 @@
         <h1>Manual</h1>
         <div id = "global">
             <label>Profesor: <label id = "nombreProf"><?php echo $nombre;?></label></label> <br>
+            <div id = "titulos">
+                <h2>Todas Las Preguntas</h2> 
+                <h2>Preguntas Seleccionadas</h2>
+            </div>
 
-            <table id = "tabPreg">
+            <div id = "tablas">
+                <table id = "tabPreg">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ENUNCIADO</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id = "cuerpoTabEx">
+
+                    </tbody>
+                </table>
+                
+                <table id = "tabSel">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>ENUNCIADO</th>
-                        <th>ACCIONES</th>
-                    </tr>
-                </thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ENUNCIADO</th>
+                        </tr>
+                    </thead>
 
-                <tbody id = "cuerpoTabEx">
+                    <tbody id = "cuerpoTabSel">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
             
-            <table id = "tabSel">
-            <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>ENUNCIADO</th>
-                    </tr>
-                </thead>
-
-                <tbody id = "cuerpoTabSel">
-
-                </tbody>
-            </table>
             
 
             <!-- Botón de enviar -->
@@ -54,6 +79,7 @@
 
 </main>
 <?php
+            
         }
     }
 ?>

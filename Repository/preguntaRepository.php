@@ -97,7 +97,7 @@
             }
         }
 
-        //Por respuesta2
+        //Por tipoUrl
         public static function findByTipoUrl($tipoUrl)
         {
             $conexion = DB::conecta();
@@ -107,6 +107,21 @@
                 // preguntaRepository::mostrarSelect($registro);
                 return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
             }
+        }
+
+        public static function findByDificultad($dificultad)
+        {
+            $conexion = DB::conecta();
+            $preguntas;
+            $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE idDificultad = '$dificultad';");
+            while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
+            {
+                // preguntaRepository::mostrarSelect($registro);
+                $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
+                $preguntas[] = $pregunta;
+            }
+
+            return $preguntas;
         }
 
         //Encontrar a todos
