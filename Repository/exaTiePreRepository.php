@@ -29,12 +29,16 @@
         public static function findByIdExamen($idExamen)
         {
             $conexion = DB::conecta();
+            $examenes;
             $resultado = $conexion->query("SELECT id, idExamen, idPregunta FROM examentienepregunta WHERE idExamen = '$idExamen';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
                 // exaTiePreRepository::mostrarSelect($registro);
-                return $examentienepregunta = new ExamenTienePregunta($registro['id'], $registro['idExamen'], $registro['idPregunta']);
+                $examentienepregunta = new ExamenTienePregunta($registro['id'], $registro['idExamen'], $registro['idPregunta']);
+                $examenes[] = $examentienepregunta;
             }
+
+            return $examenes;
         }
 
         //Por idPregunta

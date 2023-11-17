@@ -12,12 +12,15 @@
         public static function findById($id)
         {
             $conexion = DB::conecta();
+            $preguntas;
             $resultado = $conexion->query("SELECT id, enunciado, respuesta1, respuesta2, respuesta3, correcta, url, tipoURL, idCategoria, idDificultad FROM pregunta WHERE id = '$id';");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
                 // preguntaRepository::mostrarSelect($registro);
-                return $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
+                $pregunta = new Pregunta($registro['id'], $registro['enunciado'], $registro['respuesta1'], $registro['respuesta2'], $registro['respuesta3'], $registro['correcta'], $registro['url'], $registro['tipoURL'], $registro['idCategoria'], $registro['idDificultad']);
+                $preguntas[] = $pregunta;
             }
+            return $preguntas;
         }
 
         public static function findObject($pregunta)

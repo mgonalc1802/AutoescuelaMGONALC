@@ -39,6 +39,21 @@
 
     }
 
+    if ($_SERVER['REQUEST_METHOD'] == "PUT") 
+    {
+        $idPregunta = json_decode(file_get_contents("php://input"), TRUE);
+        // $preguntas;
+        
+        foreach($idPregunta as $id) 
+        {
+            $pregunta = preguntaRepository::findById($id);
+            $preguntas[] = $pregunta;
+        }
+
+
+        echo json_encode($preguntas);
+    }
+
     if ($_SERVER['REQUEST_METHOD'] == "POST") 
     {
         $dificultadObt = json_decode(file_get_contents("php://input"));

@@ -1,9 +1,10 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].'/ProyectoAutoescuela/Helper/autocargador.php';
 
-    if ($_SERVER['REQUEST_METHOD'] == "GET") 
+    if ($_SERVER['REQUEST_METHOD'] == "PUT") 
     {
-        $exaTiePres = exaTiePreRepository::findAll();
+        $idExamen = json_decode(file_get_contents("php://input"));
+        $exaTiePres = exaTiePreRepository::findByIdExamen($idExamen);
 
         $exaTiePreData = [];
         
@@ -39,8 +40,5 @@
         $idPregunta = $exaTiePreJSON->idPregunta;
 
         exaTiePreRepository::insert(new ExamenTienePregunta('', $idExamen, $idPregunta));
-        
-        // echo json_encode($idPregunta);
-        // exit();
     };
 ?>
