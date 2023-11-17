@@ -9,7 +9,7 @@
         }
     ?>
     <script src="JS/mostrarExamen.js"></script>
-    <form action = "examen" id = "formRes">
+    <form action = "examen" id = "formRes" method = "POST">
         <div id = "examen">
 
         </div>

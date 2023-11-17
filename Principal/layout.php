@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/admin.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/alumno.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/profesor.css">
+        <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/mantenimiento.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/responderPreg.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/header.css">
         <link rel="stylesheet" type="text/css" href="/ProyectoAutoescuela/CSS/nav.css">

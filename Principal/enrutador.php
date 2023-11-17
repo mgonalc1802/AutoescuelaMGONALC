@@ -81,6 +81,10 @@ if (isset($_GET['menu']))
     {
         require_once $rutaBase.'/Formularios/validar.php';
     }
+    if ($_GET['menu'] == "mantenimiento") 
+    {
+        require_once $rutaBase.'/Formularios/mantenimiento.php';
+    }
     if ($_GET['menu'] == "alumno") 
     {
         require_once $rutaBase.'/Formularios/alumno.php';
@@ -88,5 +92,13 @@ if (isset($_GET['menu']))
     if ($_GET['menu'] == "genPre") 
     {
         require_once $rutaBase.'/Formularios/generarPre.php';
+    }
+    if ($_GET['menu'] == "dificultadMan") 
+    {
+        require_once $rutaBase.'/Formularios/dificultadMan.php';
+    }
+    if ($_GET['menu'] == "categoriaMan") 
+    {
+        require_once $rutaBase.'/Formularios/categoriaMan.php';
     }
 }

@@ -41,12 +41,15 @@
         public static function findAll()
         {
             $conexion = DB::conecta();
+            $examenes;
             $resultado = $conexion->query("SELECT id, fechaCreacion, idProfesor FROM examen;");
             while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)) 
             {
                 // examenRepository::mostrarSelect($registro);
-                return $examen = new Examen($registro['id'], $registro['fechaCreacion'], $registro['idProfesor']);
+                $examen = new Examen($registro['id'], $registro['fechaCreacion'], $registro['idProfesor']);
+                $examenes[] = $examen;
             }
+            return $examenes;
         }
 
 

@@ -12,9 +12,9 @@
                 exit;
             }
              //Acción que se produce cuando pulsas el botón Registrar
-            if(isset($_POST['registrar']))
+            if(isset($_POST['realizar']))
             {
-                header("Location: ?menu=registro");
+                header("Location: ?menu=realizar");
                 exit;
             }
 

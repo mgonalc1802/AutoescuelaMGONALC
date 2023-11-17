@@ -55,12 +55,13 @@
                 header("Location: ?menu=genPre");
                 exit;
             }
-        }
-        else 
-        {
-            header("Location: ?menu=login");
-            exit;
-        }
+
+            //Acción que se produce cuando pulsas el botón Realizar
+            if(isset($_POST['realizar']))
+            {
+                header("Location: ?menu=realizar");
+                exit;
+            }
     ?>
 
     <form action = "?menu=admin" method = "POST">
@@ -88,5 +89,14 @@
         </div>
         
     </form>
-    
+    <?php
+        }
+        else
+        {
+            header("Location: ?menu=login");
+            exit;
+        }
+    ?>
+
 </main>
+
