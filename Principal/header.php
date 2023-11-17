@@ -9,6 +9,15 @@
     {
         $usuario = Sesion::leerSesion('user');
         $nombre = $usuario->getNombre();
+
+        //Cogemos la ruta completa
+        $rutaCompleta = $usuario->getUrlFoto();
+
+        // Encuentra la última barra diagonal (/) en la ruta
+        $ultimaBarra = strrpos($rutaCompleta, '/');
+
+        // Extrae la parte de la ruta después de la última barra diagonal
+        $nombreArchivo = substr($rutaCompleta, $ultimaBarra + 1);
     }
     else
     {
@@ -29,8 +38,27 @@
 
     <div id = "btn">
         <form method = "POST">
-            <label>Usuario: <?php echo($nombre);?></label>
+            
+
+            <?php
+                if(Login::estaLogueado('user'))
+                {
+            ?>
+            <img src = '/ProyectoAutoescuela/Fotos/FotosUsuarios/<?php echo $nombreArchivo ?>' width = "50px">
+            <label><?php echo($nombre);?></label>
             <button id = "cerSes" name = "cerrarSesion">Cerrar Sesion</button> 
+            <?php
+                }
+                else
+                {
+            ?>
+
+            <button id = "cerSes" name = "cerrarSesion">Iniciar Sesion</button> 
+
+            <?php
+                }
+            ?>
+
         </form>
             
     </div>

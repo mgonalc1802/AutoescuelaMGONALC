@@ -17,7 +17,6 @@
                 $nombre = $_POST['nombre'];
                 $contrasenia = $_POST['contrasenia'];
                 $rol = $_POST['rol'];
-                // $urlFoto = $_POST['urlFoto'];
 
                 //Comprueba que los campos anteriores no estén vacíos
                 $erroresEnviar = validator::validarLogin($nombre, $contrasenia);
@@ -26,12 +25,20 @@
                 {
                     if(!usuarioRepository::existeUsuario($nombre, $contrasenia))
                     {
-                        foreach($usuarios as $usuario)
+                        $url = $_FILES['urlFoto'];
+                        if (isset($url) && is_uploaded_file($url['tmp_name'])) 
                         {
-                            $usuarioNuevo = new Usuario($contador, $nombre, $contrasenia, $rol, 'myAvatar.png', 0);
-                            $contador = $contador++;
+                            $dir_subida = $_SERVER['DOCUMENT_ROOT']."/ProyectoAutoescuela/Fotos/FotosUsuarios/";
+                            $fichero_subido = $dir_subida . basename($url['name']);
+                            move_uploaded_file($url['tmp_name'], $fichero_subido);
+                            foreach($usuarios as $usuario)
+                            {
+                                $usuarioNuevo = new Usuario($contador, $nombre, $contrasenia, $rol, $fichero_subido, 0);
+                                $contador = $contador++;
+                            }
+                            usuarioRepository::insert($usuarioNuevo);
                         }
-                        usuarioRepository::insert($usuarioNuevo);
+                        
                     }
                     else
                     {
@@ -82,8 +89,8 @@
             </select><br><br>
 
             <label>Foto:</label>
-            <input type = "hidden" name = "MAX_FILE_SIZE" value = "30000" />
-            <input name = "urlFoto" type = "file" /> <br><br>
+            <input type = "hidden" name = "MAX_FILE_SIZE" value = "2048576" />
+            <input id ='urlFoto' name = "urlFoto" type = "file" /> <br><br>
 
             <!-- Botón de enviar -->
             <input id = "registrarReg" type = "submit" value = "Registrar"  name = "registrarReg">

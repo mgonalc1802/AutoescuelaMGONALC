@@ -103,7 +103,6 @@
             <?php        
                         foreach($usuariosValidados as $usuarioVal) 
                         {    
-                            // echo "<tr><td>" . $usuarioVal->getNombre() . "</td>";
             ?>
                         <tr>
                             <td>
@@ -116,7 +115,16 @@
                                 </select>
                             </td>
                             <?php
-                                echo "<td>" . $usuarioVal->getUrlFoto() . "</td>";
+
+                                $rutaCompleta = $usuarioVal->getUrlFoto();
+                            
+                                // Encuentra la última barra diagonal (/) en la ruta
+                                $ultimaBarra = strrpos($rutaCompleta, '/');
+                            
+                                // Extrae la parte de la ruta después de la última barra diagonal
+                                $nombreArchivo = substr($rutaCompleta, $ultimaBarra + 1);
+                            
+                                echo "<td>" . $nombreArchivo . "</td>";
                             ?>
                             <td>
                                 <center>
@@ -132,10 +140,8 @@
                         {
                             if(isset($_POST['modificarUser' . $i]))
                             {
-                                // usuarioRepository::updateById();
                                 $nombre = $_POST['nombre'.$i];
                                 $rol = $_POST['rol'.$i];
-                                // echo $rol;
                                 usuarioRepository::updateNombre($usuariosValidados[$i], $nombre); 
                                 usuarioRepository::updateRol($usuariosValidados[$i], $rol); 
 

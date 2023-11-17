@@ -13,7 +13,6 @@
             $respuesta2 = $_POST['respuesta2'];
             $respuesta3 = $_POST['respuesta3'];
             $correcta = $_POST['correcta'];
-            // $url = $_POST['url'];
             $tipoUrl = $_POST['tipoUrl'];
             $categoria = $_POST['categoria'];
             $dificultad = $_POST['dificultad'];
@@ -40,9 +39,16 @@
             {
                 if(!preguntaRepository::existePregunta($enunciado, $respCorr))
                 {
-                    $url = "https://practicatest.com/views/layout/default/img/tests/B/8d84f46c4eca0ff0ab072c31094cd539.jpg";
-                    $preguntaNuevo = new pregunta("", $enunciado, $respuesta1, $respuesta2, $respuesta3, $respCorr, $url, $tipoUrl, $categoria, $dificultad);
-                    preguntaRepository::insert($preguntaNuevo);
+                    $url = $_FILES['urlFoto'];
+                    if (isset($url) && is_uploaded_file($url['tmp_name'])) 
+                    {
+                        $dir_subida = $_SERVER['DOCUMENT_ROOT']."/ProyectoAutoescuela/Fotos/FotosPreguntas/";
+                        $fichero_subido = $dir_subida . basename($url['name']);
+                        move_uploaded_file($url['tmp_name'], $fichero_subido);
+                        $preguntaNuevo = new pregunta("", $enunciado, $respuesta1, $respuesta2, $respuesta3, $respCorr, $fichero_subido, $tipoUrl, $categoria, $dificultad);
+                        preguntaRepository::insert($preguntaNuevo);
+                    }
+                    
                 }
                 else
                 {
@@ -131,8 +137,8 @@
             
                 <div>
                     <label>URL: </label>
-                    <input type = "hidden" name = "MAX_FILE_SIZE" value = "30000" />
-                    <input name = "urlFoto" type = "file" /> <br><br>
+                    <input type = "hidden" name = "MAX_FILE_SIZE" value = "2048576" />
+                    <input id ='urlFoto' name = "urlFoto" type = "file" /> <br><br>
                 </div>
                 
             </div>
